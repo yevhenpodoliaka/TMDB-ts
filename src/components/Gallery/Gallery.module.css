@@ -1,0 +1,16 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px;
+    background-color: #959595;
+}
+
+@media screen and (min-width: 1280px) {
+
+    .gallery {
+        margin-bottom: 40px;
+    }
+
+
+}

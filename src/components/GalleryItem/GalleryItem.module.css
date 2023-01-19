@@ -1,0 +1,17 @@
+.galleryItem {
+    width: calc((100% - 20px) / 2);
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+@media screen and (min-width: 1280px) {
+
+    .galleryItem {
+        width: calc((100% - 40px) / 3);
+    }
+    
+}

@@ -1,38 +1,35 @@
-.logo{
-display: flex;
-align-items: center;
-justify-content:flex-start;
-margin-bottom: 40px;
-
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 40px;
 }
-.logoText{
-    font-weight: 400;
-    font-size: 30px;
-    color: white;
+.logoText {
+  font-weight: 400;
+  font-size: 30px;
+  color: white;
 }
 @media screen and (max-width: 767px) {
-.header {
-        height: 230px;
-        padding: 20px;
-        background-image: url("../../images/header-mobile-x1.png");
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-    }
+  .header {
+    height: 230px;
+    padding: 20px;
+    background-image: url("../../images/header-mobile-x1.png");
+    background-repeat: no-repeat;
+    background-color: black;
+  }
 }
 
 @media screen and (min-width: 768px) {
-.header {
+  .header {
     padding: 40px;
-        height: 216px;
-        background-image: url("../../images/header-tablet-x1.png");
-    }
+    height: 216px;
+    background-image: url("../../images/header-tablet-x1.png");
+    background-color: black;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-.header {
-        margin-top: 40px;
-               height: 216px;
-        background-image: url("../../images/header-desktop-x1.png");
-    }
+  .header {
+    background-image: url("../../images/header-desktop-x1.png");
+  }
 }
