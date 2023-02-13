@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Gallery from "./components/Gallery/Gallery";
 import { fetchTrendingMovies, fetchQueryMovies } from "./service/api-service";
-import { movieType, responseType } from "./types";
+import { movieType, } from "./types";
 
 const App = () => {
   const [movies, setMovies] = useState<Array<movieType>>([]);
@@ -13,13 +13,13 @@ const App = () => {
   useEffect(() => {
     if (query.trim() !== "") {
 
-        fetchQueryMovies<responseType>(query, page)
+        fetchQueryMovies(query, page)
         .then(({ results }) => setMovies(results))
         .catch(console.log);
       
     }
 
-    fetchTrendingMovies<responseType>(page)
+    fetchTrendingMovies(page)
       .then(({ results }) => setMovies(results))
       .catch(console.log);
     
