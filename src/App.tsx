@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Gallery from "./components/Gallery/Gallery";
 import { fetchTrendingMovies, fetchQueryMovies } from "./service/api-service";
-import { movieType, } from "./types";
+import { IMovie } from "types";
 
 const App = () => {
-  const [movies, setMovies] = useState<Array<movieType>>([]);
+  const [movies, setMovies] = useState<Array<IMovie>>([]);
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState(1);
 

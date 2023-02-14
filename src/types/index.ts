@@ -1,11 +1,14 @@
-export type movieType = {
+export interface IMovie {
     id: number,
     title: string,
-    poster_path:string,
+    poster_path: string,
+    genre_ids: number[],
+    vote_average:number,
+    
 }
-export type responseType = {
+export interface IResponse {
     page: number,
-    results: movieType[],
+    results: IMovie[],
     total_pages: number,
     total_results: number
 }
