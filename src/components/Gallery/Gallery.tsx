@@ -7,7 +7,7 @@ type Props = {
   movies:IMovie[]
 }
 
-const Gallery = ({movies}:Props) => {
+const Gallery = ({movies=[]}:Props) => {
 
   return (
     <ul className={style.gallery}>

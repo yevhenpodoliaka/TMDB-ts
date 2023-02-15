@@ -18,7 +18,10 @@ img {
   height: auto;
   object-fit: contain;
 }
-
+a{
+    text-decoration: none;
+    color: inherit;
+}
 .App {
     margin: 0 auto;
 }
@@ -41,4 +44,11 @@ img {
         width: 1280px;
     }
 
+}
+
+.notFoundPage{
+    height: 100vh;
+    background-image: url("images/not-found.jpg");
+    background-size: cover;
+    text-align: center;
 }

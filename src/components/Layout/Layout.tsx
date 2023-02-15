@@ -4,14 +4,14 @@ import { Outlet } from 'react-router-dom';
 
 const  Layout=()=> {
   return (
-    <>
+    <div className='App'>
       <Header />
       <main>
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
         </Suspense>
       </main>
-    </>
+    </div>
   );
 }
 
