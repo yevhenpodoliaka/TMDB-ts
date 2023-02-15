@@ -1,36 +1,28 @@
-import { useState, useEffect } from "react";
-import Header from "./components/Header/Header";
-import Gallery from "./components/Gallery/Gallery";
-import { fetchTrendingMovies, fetchQueryMovies } from "./service/api-service";
-import { IMovie } from "types";
+import { lazy } from 'react'
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import { Navigate } from 'react-router-dom';
+const Movies = lazy(() => import("./pages/Movies"));
+const MovieDetails = lazy(() => import("./pages/MovieDetails"));
+// const Cast =lazy(()=>import('./Cast/Cast'))
+// const MovieReviews = lazy(() => import('./MovieReviews/MovieReviews'))
+const NotFound =lazy(()=>import('./pages/NotFound'))
 
-const App = () => {
-  const [movies, setMovies] = useState<Array<IMovie>>([]);
-  const [query, setQuery] = useState<string>("");
-  const [page, setPage] = useState(1);
 
+export const App = () => {
+  return (< >
+    <Routes>
+      <Route path="/" element={<Layout/>}>
+          <Route index element={<Navigate to="/movies" replace={true} />} />
+          <Route path="movies" element={<Movies />}/>
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+              {/* <Route path="cast" element={<Cast/>}/>
+              <Route path="reviews" element={<MovieReviews/>}/> */}
+        </Route>
+        <Route path='*' element={<NotFound/>}/>
+      </Route>
+    </Routes>
+  </>
 
-  useEffect(() => {
-    if (query.trim() !== "") {
-
-        fetchQueryMovies(query, page)
-        .then(({ results }) => setMovies(results))
-        .catch(console.log);
-      
-    }
-
-    fetchTrendingMovies(page)
-      .then(({ results }) => setMovies(results))
-      .catch(console.log);
-    
-  }, [query, page]);
-
-  return (
-    <div className="App">
-      <Header onSubmit={setQuery} />
-      <Gallery movies={movies} />
-    </div>
   );
 };
-
-export default App;
