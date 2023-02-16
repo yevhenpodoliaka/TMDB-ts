@@ -1,8 +1,8 @@
 {
-  "name": "filmoteka-ts",
+  "name": "tmdb",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yevhenpodoliaka.github.io/filmoteka-ts",
+  "homepage": "https://yevhenpodoliaka.github.io/TMDB-ts",
   "dependencies": {
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.26",
