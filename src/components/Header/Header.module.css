@@ -1,8 +1,6 @@
 .logo {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 40px;
+width:80px;
+ height:80px;
 }
 .logoText {
   font-weight: 400;
@@ -11,25 +9,20 @@
 }
 @media screen and (max-width: 767px) {
   .header {
-    height: 230px;
+    height: 200px;
     padding: 20px;
-    background-image: url("../../images/header-mobile-x1.png");
-    background-repeat: no-repeat;
-    background-color: black;
+  
   }
 }
 
 @media screen and (min-width: 768px) {
   .header {
     padding: 40px;
-    height: 216px;
-    background-image: url("../../images/header-tablet-x1.png");
-    background-color: black;
   }
 }
 
-@media screen and (min-width: 1280px) {
+/* @media screen and (min-width: 1280px) {
   .header {
     background-image: url("../../images/header-desktop-x1.png");
   }
-}
+} */
