@@ -16,7 +16,6 @@ const MoviesPage = () => {
     [searchParams]
   );
   const { page, query } = params;
-  console.log(page)
 
   useEffect(() => {
     if (!query || query.trim() === "") {
