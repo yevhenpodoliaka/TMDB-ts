@@ -22,7 +22,6 @@ const Gallery = ({movies=[]}:Props) => {
         
       </ul>
    
-
   )
 }
 

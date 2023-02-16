@@ -1,10 +1,32 @@
-.movieCard{
-   display: flex; 
+.card {
+  background-color: #f1f1f1;
+  display: flex;
 }
-.posterWrap{
-    width: 40%;
+.posterWrap {
+  padding: 15px;
+  width: 40%;
+}
+.descriptionWrap {
+  padding: 15px;
+  width: 60%;
+}
 
+.companiesWrap {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
 }
-.descriptionWrap{
-width: 60%;
+.companyCard {
+
+  width: 44px;
+    display: flex;
+    flex-direction: column;
+}
+.companyName {
+  font-size: 10px;
+  flex-grow: 1;
+}
+.companyCountry {
+  font-size: 8px;
 }

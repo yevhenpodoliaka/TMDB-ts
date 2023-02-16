@@ -19,7 +19,7 @@
     left: 8px;
 }
 
-.wrap{
+.linkWrap{
 display: flex;
 flex-direction: column;
 }

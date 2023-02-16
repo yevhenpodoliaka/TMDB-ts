@@ -32,7 +32,7 @@ const GalleryItem = ({
   return (
     <li className={style.galleryItem}>
       <Link
-        className={style.wrap}
+        className={style.linkWrap}
         to={`/movie/${id}`}
         state={{ from: location }}
       >
