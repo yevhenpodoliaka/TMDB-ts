@@ -33,7 +33,7 @@ const GalleryItem = ({
     <li className={style.galleryItem}>
       <Link
         className={style.wrap}
-        to={`/movies/${id}`}
+        to={`/movie/${id}`}
         state={{ from: location }}
       >
         <img src={imageUrl} alt={title} />
