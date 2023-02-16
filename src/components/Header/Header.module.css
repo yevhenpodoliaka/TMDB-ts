@@ -1,28 +1,25 @@
 .logo {
-width:80px;
- height:80px;
+  width:40px;
+ height:40px;
+    transition-property: transform, box-shadow;
+      transition-duration: 250ms;
+      transition-timing-function: linear;
 }
-.logoText {
-  font-weight: 400;
-  font-size: 30px;
-  color: white;
+.logo:hover{
+      transform: scale(1.02);
+        box-shadow: 0 10px 26px #141414;
 }
-@media screen and (max-width: 767px) {
+
+@media screen and (min-width: 768px){
+  .logo {
+      width: 80px;
+      height: 80px;
+    }
+}
+
   .header {
-    height: 200px;
     padding: 20px;
-  
+    background-color: #0d253f;
   }
-}
 
-@media screen and (min-width: 768px) {
-  .header {
-    padding: 40px;
-  }
-}
 
-/* @media screen and (min-width: 1280px) {
-  .header {
-    background-image: url("../../images/header-desktop-x1.png");
-  }
-} */

@@ -6,6 +6,8 @@ box-sizing: border-box;
 
 body{
   font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
   background-color: grey;
   background-image: url("./images/bg.jpg");
 }

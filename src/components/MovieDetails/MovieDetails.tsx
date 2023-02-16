@@ -1,7 +1,7 @@
 import style from "./MovieDetails.module.css";
 import defaultPoster from "images/no-poster.jpg";
 import { IResponseById } from "interfaces";
-import MoviesCompany from "./MoviesCompany";
+
 
 interface IProps {
   data: IResponseById;
@@ -12,11 +12,11 @@ const MovieDetails = ({ data }: IProps) => {
     budget,
     genres,
     homepage,
+    title,
     original_title,
     overview,
     popularity,
     poster_path,
-    production_companies,
     // release_date,
     revenue,
     runtime,
@@ -24,7 +24,6 @@ const MovieDetails = ({ data }: IProps) => {
     vote_count,
   } = data;
 
-  console.log(genres);
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
@@ -35,18 +34,19 @@ const MovieDetails = ({ data }: IProps) => {
         <img src={posterUrl} alt=" movies poster" />
       </div>
       <div className={style.descriptionWrap}>
-        <p>title: {original_title}</p>
+       {title &&<h3>{title}</h3>}
+       {original_title &&<p>{ original_title}</p>}
         <p>{genres?.map((i) =>i.name).join(" , ")}</p>
         {/* <p>release date: {release_date}</p> */}
-        <p>vote count{vote_count}</p>
-        <p>rating {vote_average}</p>
-        <p>revenue {revenue}$</p>
-        <p>popularity {popularity}</p>
-        <p>homepage {homepage}</p>
-        <p>runtime {runtime}</p>
-        <p>budget {budget}$</p>
-        <p>About :{overview}</p>
-        <MoviesCompany production_companies={production_companies} />
+       {vote_count>0 && <p>кількість голосів:<span className={style.value}>{vote_count}</span></p>}
+       {vote_average>0&& <p>рейтинг <span className={style.value}>{vote_average}</span></p>}
+       {revenue>0&& <p>дохід <span className={style.value}>{revenue}$</span></p>}
+        {popularity>0&&<p>популярність: <span className={style.value}>{popularity}</span></p>}
+       {homepage&& <p>офіційний сайт: <span className={style.value}>{homepage}</span></p>}
+       {runtime>0&& <p>тривалість <span className={style.value}>{runtime} хв</span></p>}
+       {budget>0 && <p>б'юджет <span className={style.value}>{budget}$</span></p>}
+        {overview && <p>Опис :</p>}
+        {overview &&<p className={style.value}>{overview}</p>}
       </div>
     </div>
   );

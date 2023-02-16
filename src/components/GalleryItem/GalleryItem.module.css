@@ -3,15 +3,23 @@
     width: calc((100% - 20px) / 2);
     background-color: white;
     color: black;
-    padding: 8px;
+    padding: 4px;
     border-radius: 4px;
     cursor: pointer;
+
+    transition-property: transform, box-shadow;
+    transition-duration: 250ms;
+    transition-timing-function: linear;
  
+}
+.galleryItem:hover{
+    transform: scale(1.02);
+    box-shadow: 0 10px 26px #141414;
 }
 
 .rating {
-    background-color: #2b4d8d;
-    color: white;
+    background-color: #90cea1;
+    color: #0d253f;
     padding: 4px;
     border-radius: 8px;
     position: absolute;

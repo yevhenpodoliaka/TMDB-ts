@@ -1,32 +1,36 @@
 .card {
   background-color: #f1f1f1;
   display: flex;
+  flex-direction: column;
 }
 .posterWrap {
   padding: 15px;
-  width: 40%;
+
 }
 .descriptionWrap {
   padding: 15px;
-  width: 60%;
-}
-
-.companiesWrap {
   display: flex;
-  align-items: center;
-
+  flex-direction: column;
   gap: 8px;
 }
-.companyCard {
+@media screen and (min-width: 768px) {
+  .card {
+      flex-direction: row;
+    }
+  .posterWrap {
+      width: 40%;
+    }
+  
+    .descriptionWrap {
+      width: 60%;
+    }
+  
+}
 
-  width: 44px;
-    display: flex;
-    flex-direction: column;
-}
-.companyName {
-  font-size: 10px;
-  flex-grow: 1;
-}
-.companyCountry {
-  font-size: 8px;
+
+.value{
+  background-color: #90cea1;
+  color: #0d253f;
+  padding: 4px;
+  border-radius: 8px;
 }

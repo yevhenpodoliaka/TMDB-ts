@@ -19,6 +19,7 @@ export interface IResponseById{
     genres: {id:number,name:string}[],
     homepage:string,
     id: number,
+    title:string,
     original_title: string,
     overview: string,
     popularity: number,
