@@ -19,7 +19,7 @@ export  async function fetchQueryMovies(query: string, page: number=1) {
   return data ;
 }
   
-export  async function fetchMovieById(id: number) {
+export  async function fetchMovieById(id: string) {
   const url = `${BASE_URL}/movie/${id}?api_key=${KEY}&language=uk-UA`
   const response = await fetch(url);
   const data: IResponseById = await response.json();

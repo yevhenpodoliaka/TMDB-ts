@@ -4,16 +4,19 @@ import { fetchTrendingMovies, fetchQueryMovies } from "service/api-service";
 import { IMovie } from "interfaces";
 import Gallery from "components/Gallery/Gallery";
 
-const Movies = () => {
+const MoviesPage = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({page:"1"});
+
+
 
   const params = useMemo(
     () => Object.fromEntries([...searchParams]),
     [searchParams]
   );
-  const { page = 1, query } = params;
+  const { page, query } = params;
+  console.log(page)
 
   useEffect(() => {
     if (!query || query.trim() === "") {
@@ -26,7 +29,7 @@ const Movies = () => {
         .then(({ results }) => setMovies(results))
         .catch(console.log);
     }
-  }, [page, query]);
+  }, [page, params, query, setSearchParams]);
   return (
     <>
       <Gallery movies={movies} />
@@ -41,4 +44,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default MoviesPage;

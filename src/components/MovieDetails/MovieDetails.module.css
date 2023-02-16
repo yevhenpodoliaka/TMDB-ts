@@ -1,0 +1,10 @@
+.movieCard{
+   display: flex; 
+}
+.posterWrap{
+    width: 40%;
+
+}
+.descriptionWrap{
+width: 60%;
+}
