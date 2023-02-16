@@ -3,13 +3,13 @@ import { useSearchParams } from "react-router-dom";
 import { fetchTrendingMovies, fetchQueryMovies } from "service/api-service";
 import { IMovie } from "interfaces";
 import Gallery from "components/Gallery/Gallery";
+import Button from "components/Button/Button";
+import { FcNext, FcPrevious } from "react-icons/fc";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState<IMovie[]>([]);
 
-  const [searchParams, setSearchParams] = useSearchParams({page:"1"});
-
-
+  const [searchParams, setSearchParams] = useSearchParams({ page: "1" });
 
   const params = useMemo(
     () => Object.fromEntries([...searchParams]),
@@ -32,13 +32,26 @@ const MoviesPage = () => {
   return (
     <>
       <Gallery movies={movies} />
-      <button
-        onClick={() =>
-          setSearchParams({ ...params, page: (Number(page) + 1).toString() })
-        }
-      >
-        next page
-      </button>
+      <div className="galleryOptions">
+        <Button
+          aria-label="prev page"
+          onClick={() =>
+            setSearchParams({ ...params, page: (Number(page) - 1).toString() })
+          }
+        >
+          <FcPrevious />
+          prev page
+        </Button>
+        <Button
+          aria-label="next page"
+          onClick={() =>
+            setSearchParams({ ...params, page: (Number(page) + 1).toString() })
+          }
+        >
+          next page
+          <FcNext />
+        </Button>
+      </div>
     </>
   );
 };
