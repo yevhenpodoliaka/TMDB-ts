@@ -56,9 +56,3 @@ a{
     background-repeat: no-repeat;
     text-align: center;
 }
-.galleryOptions {
-    width: 280px;
-    display: flex;
-    gap:12px;
-    margin: 24px auto;
-}

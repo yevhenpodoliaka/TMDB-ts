@@ -4,7 +4,7 @@ import GalleryItem from "../GalleryItem/GalleryItem"
 
 
 type Props = {
-  movies:IMovie[]
+  movies: IMovie[]
 }
 
 const Gallery = ({movies=[]}:Props) => {
