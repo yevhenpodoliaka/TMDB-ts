@@ -8,7 +8,7 @@ const Header = () => {
     const { movieId } = useParams();
  
     return <header className={style.header}>
-        <Link className={style.logo} to="/">
+        <Link className={style.logo} to="/?page=1">
             <img className={style.logo} src={logoImg} alt="logo"  />
         </Link>
         {!movieId && <SearchBar/>}

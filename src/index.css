@@ -24,10 +24,18 @@ a{
     text-decoration: none;
     color: inherit;
 }
+
+
+
 .App {
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
-
+main {
+    flex-grow: 1;
+}
 
 @media screen and (max-width: 767px) {
     .App {

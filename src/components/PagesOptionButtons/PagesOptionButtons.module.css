@@ -1,6 +1,7 @@
 .wrap {
-    width: 280px;
+    width: 180px;
     display: flex;
-    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
     margin: 24px auto;
 }

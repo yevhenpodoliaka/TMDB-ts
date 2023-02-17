@@ -16,8 +16,6 @@ const PagesOptionButtons = ({ totalPages }: IProps) => {
     [searchParams]
   );
   const { page } = params;
-  console.log("page   ", page);
-  console.log("Total page   ", totalPages);
   return (
     <div className={style.wrap}>
 {Number(page) > 1 &&      <Button
