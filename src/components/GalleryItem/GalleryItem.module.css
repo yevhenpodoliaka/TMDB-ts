@@ -1,69 +1,63 @@
 .galleryItem {
-    position: relative;
-    width: calc((100% - 20px) / 2);
-    background-color: white;
-    color: black;
-    padding: 4px;
-    border-radius: 4px;
-    cursor: pointer;
+  position: relative;
+  width: calc((100% - 20px) / 2);
+  background-color: white;
+  color:var(--primary-color);
+  padding: 4px;
+  border-radius: 4px;
+  cursor: pointer;
 
-    transition-property: transform, box-shadow;
-    transition-duration: 250ms;
-    transition-timing-function: linear;
- 
+  transition-property: transform, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
 }
-.galleryItem:hover{
-    transform: scale(1.02);
-    box-shadow: 0 10px 26px #141414;
+.galleryItem:hover {
+  transform: scale(1.02);
+  box-shadow: var(--box-shadow);
 }
 
 .rating {
-    background-color: #90cea1;
-    color: #0d253f;
-    padding: 4px;
-    border-radius: 8px;
-    position: absolute;
-    top: 8px;
-    left: 8px;
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+  padding: 4px;
+  border-radius: 8px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
 }
 
-.linkWrap{
-display: flex;
-flex-direction: column;
+.linkWrap {
+  display: flex;
+  flex-direction: column;
 }
 
-.title{
-    font-size: 12px;
-    font-weight: bold;
-    flex-grow: 1;
-
+.title {
+  font-size: 12px;
+  font-weight: bold;
+  flex-grow: 1;
 }
-.genres{
- font-size: 10px;  
+.genres {
+  font-size: 10px;
 }
 
 @media screen and (min-width: 768px) {
+  .galleryItem {
+    width: calc((100% - 45px) / 4);
+  }
 
-    .galleryItem {
-        width: calc((100% - 45px) / 4);
-    }
+  .title {
+    font-size: 16px;
+    text-align: start;
+  }
 
-    .title {
-        font-size: 16px;
-        text-align: start;
-    }
-
-    .genres {
-        font-size: 14px;
-        text-align: end;
-    }
-
+  .genres {
+    font-size: 14px;
+    text-align: end;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-
-    .galleryItem {
-        width: calc((100% - 60px ) / 5);
-    }
-  
+  .galleryItem {
+    width: calc((100% - 60px) / 5);
+  }
 }

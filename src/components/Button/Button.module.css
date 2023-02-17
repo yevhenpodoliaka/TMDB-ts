@@ -1,22 +1,24 @@
-.button{
-    margin: 0;
-        padding: 12px;
-        border: none;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        border-radius: 4px;
-        font: inherit;
-    background-color:#90cea1 ;
-        color: #0d253f;
-        cursor: pointer;
-
+.button {
+  margin: 0;
+  padding: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 4px;
+  font: inherit;
+  background-color: var(--tertiary-color);
+  color: var(--primary-color);
+  cursor: pointer;
+  transition-property: transform, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
 }
- 
+
 .button:hover,
-button:focus{
-background-color: #0d253f;
-    color: #90cea1;
+button:focus {
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  transform: scale(1.02);
+  box-shadow: var(--box-shadow);
 }
-
-

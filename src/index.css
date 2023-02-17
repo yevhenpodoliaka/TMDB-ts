@@ -35,6 +35,7 @@ a{
 }
 main {
     flex-grow: 1;
+    background-color: var(--secondary-color);
 }
 
 @media screen and (max-width: 767px) {
