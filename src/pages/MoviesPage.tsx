@@ -5,15 +5,12 @@ import { IMovie } from "interfaces";
 import Gallery from "components/Gallery/Gallery";
 import PagesOptionButtons from "components/PagesOptionButtons/PagesOptionButtons";
 import NotResultPoster from "components/NotResultPoster/NotResultPoster";
+import ErrorPoster from "components/ErrorPoster/ErrorPoster";
 import Spinner from "components/Spinner/Spinner";
-// idle - запроса еще нет
-// pending - пошел запрос
-// resolved - успешный запрос
-// rejected - запрос с ошибкой
-// type TState = "idle"|"pending"|"resolved"|"rejected"
 
 const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<Error>();
   const [movies, setMovies] = useState<IMovie[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [totalResult, setTotalResult] = useState(1);
@@ -26,7 +23,7 @@ const MoviesPage = () => {
   const { page, query } = params;
 
   useEffect(() => {
-    setIsLoading(true)
+    setIsLoading(true);
     if (!query || query.trim() === "") {
       fetchTrendingMovies(Number(page))
         .then(({ results, total_pages, total_results }) => {
@@ -34,7 +31,7 @@ const MoviesPage = () => {
           setTotalPages(total_pages);
           setTotalResult(total_results);
         })
-        .catch(console.log)
+        .catch((e) => setError(e))
         .finally(() => setIsLoading(false));
     }
     if (query) {
@@ -44,20 +41,21 @@ const MoviesPage = () => {
           setTotalPages(total_pages);
           setTotalResult(total_results);
         })
-        .catch(console.log)
+        .catch((e) => setError(e))
         .finally(() => setIsLoading(false));
     }
   }, [page, params, query, setSearchParams]);
 
   return (
     <>
+      {error && <ErrorPoster />}
       {totalResult < 1 ? (
         <NotResultPoster text={query} />
       ) : (
         <Gallery movies={movies} />
       )}
       {isLoading && <Spinner />}
-      <PagesOptionButtons totalPages={totalPages} />
+      {totalPages > 1 && <PagesOptionButtons totalPages={totalPages} />}
     </>
   );
 };
