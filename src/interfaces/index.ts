@@ -35,3 +35,12 @@ export interface IResponseById{
     vote_average: number,
     vote_count: number
 }
+export interface IActor{
+    id?: number,
+    character: string,
+    name: string,
+    profile_path: string
+}
+export interface ICast{
+    cast: IActor[]
+}

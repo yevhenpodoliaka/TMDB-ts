@@ -1,0 +1,15 @@
+.cast{
+display: flex;
+flex-wrap: wrap;
+gap: 5px;
+} 
+.castItem{
+width: 100px;
+} 
+
+.name{
+font-size: 14px;
+} 
+.role{
+font-size: 14px;
+} 
