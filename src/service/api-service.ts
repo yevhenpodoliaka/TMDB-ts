@@ -47,7 +47,7 @@ export async function fetchCast(movieId: string) {
   return data;
 }
 export async function fetchReviews(movieId: string) {
-  const url = `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=uk-UA`;
+  const url = `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US`;
   const response = await fetch(url);
   if (!response.ok) {
     const message = `Error Status ${response.status}`;
