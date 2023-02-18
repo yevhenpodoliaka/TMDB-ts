@@ -1,4 +1,4 @@
-import { IResponse, IResponseById,ICast } from "../interfaces";
+import { IResponse, IResponseById,ICast, IResponseReviews } from "../interfaces";
 
 const KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3/";
@@ -53,6 +53,6 @@ export async function fetchReviews(movieId: string) {
     const message = `Error Status ${response.status}`;
     throw new Error(message);
   }
-  const data = await response.json();
+  const data: IResponseReviews = await response.json();
   return data;
 }

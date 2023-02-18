@@ -1,13 +1,15 @@
-import { fetchCast } from 'service/api-service';
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import Actor from './Actor';
-import style from "./Cast.module.css"
-import { IActor } from 'interfaces';
+import style from "./Cast.module.css";
+import { fetchCast } from "service/api-service";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Actor from "./Actor";
+import { IActor } from "interfaces";
 
 const Cast = () => {
-   const [cast, setCast] = useState<IActor[]>();
+
+  const [cast, setCast] = useState<IActor[]>();
   const { movieId } = useParams();
+
   useEffect(() => {
     async function fetch() {
       try {
@@ -19,7 +21,9 @@ const Cast = () => {
     }
     fetch();
   }, [movieId]);
+
   return (
+
     <>
       {cast?.length === 0 ? (
         <p>Нажаль ми не маємо інформації щодо акторського складу</p>
@@ -31,12 +35,15 @@ const Cast = () => {
                 key={id}
                 character={character}
                 name={name}
-                profile_path={profile_path}             />
+                profile_path={profile_path}
+              />
             );
           })}
         </ul>
       )}
     </>
+
   );
-}
-export  default Cast
+};
+
+export default Cast;
