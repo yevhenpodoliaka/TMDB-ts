@@ -1,15 +1,26 @@
-.cast{
-display: flex;
-flex-wrap: wrap;
-gap: 5px;
-} 
-.castItem{
-width: 100px;
-} 
+.cast {
+  padding: 15px;
+}
 
-.name{
-font-size: 14px;
-} 
-.role{
-font-size: 14px;
-} 
+.name {
+  font-size: 14px;
+}
+.role {
+  font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+  .cast {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .castItem {
+    width: calc((100% - 40px) / 6);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .castItem {
+    width: calc((100% - 56px) / 8);
+  }
+}

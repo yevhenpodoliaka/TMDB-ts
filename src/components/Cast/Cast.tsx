@@ -6,25 +6,24 @@ import Actor from "./Actor";
 import { IActor } from "interfaces";
 
 const Cast = () => {
-
+  const [error, setError] = useState<Error>();
   const [cast, setCast] = useState<IActor[]>();
   const { movieId } = useParams();
 
   useEffect(() => {
-    async function fetch() {
-      try {
-        const response = await fetchCast(movieId!);
-        await setCast(response.cast);
-      } catch (error) {
-        console.log(error);
-      }
+    if (movieId) {
+      fetchCast(movieId)
+        .then(res => setCast(res.cast))
+        .catch(setError)
+  
     }
-    fetch();
+    
   }, [movieId]);
 
   return (
 
     <>
+      {error&&<p>винткла помилка при загрузці даних</p>}
       {cast?.length === 0 ? (
         <p>Нажаль ми не маємо інформації щодо акторського складу</p>
       ) : (

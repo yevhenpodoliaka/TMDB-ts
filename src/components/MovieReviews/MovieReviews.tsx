@@ -6,24 +6,22 @@ import { fetchReviews } from 'service/api-service';
 import MovieReviewsItem from './MovieReviewsItem';
 
 const MovieReviews = () => {
-   
+    const [error, setError] = useState<Error>();
   const [reviews, setReviews] = useState<IReview[]>();
   const { movieId } = useParams();
 
   useEffect(() => {
-    async function fetch() {
-      try {
-        const response = await fetchReviews(movieId!);
-        await setReviews(response.results);
-      } catch (error) {
-        console.log(error);
-      }
+      if (movieId) {
+        fetchReviews(movieId)
+          .then(res => setReviews(res.results))
+          .catch(setError)
     }
+    
 
-    fetch();
   }, [movieId]);
   return (
     <>
+      {error&&<p>винткла помилка при загрузці даних</p>}
       {reviews?.length === 0 ? (
         <p>Нажаль ми не маємо відгуків/оглядів про цей фільм</p>
       ) : (
