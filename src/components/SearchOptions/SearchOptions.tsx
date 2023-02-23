@@ -11,7 +11,7 @@ const SearchOptions = () => {
   return (
     <div className={style.optionsWrap}>
           <Dropdown optionsList={years} defaultText={'рік'}  searchParam="year"/>
-          <Dropdown optionsList={data.genres} defaultText={'жанр'}searchParam="genres"  />
+          <Dropdown optionsList={data.genres} defaultText={'жанр'}searchParam="genre"  />
     </div>
   );
 };

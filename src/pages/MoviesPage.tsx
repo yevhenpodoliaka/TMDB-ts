@@ -60,7 +60,7 @@ const MoviesPage = () => {
         .catch(e => setError(e))
         .finally(() => setIsLoading(false));
     }
-  }, [page, params, query, setSearchParams, year]);
+  }, [genre, page, params, query, setSearchParams, year]);
 
   return (
     <>
