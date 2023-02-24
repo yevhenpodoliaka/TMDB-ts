@@ -31,6 +31,12 @@ const Dropdown = ({ optionsList, defaultText, searchParam }: IProps) => {
     if (!year && !genre) {
       setDefaultSelectText(defaultText)
     }
+    if(year && defaultText==="рік"){
+      setDefaultSelectText(year) 
+    }
+    if (genre && defaultText==="жанр"){
+    setDefaultSelectText(genre);
+    }
     
   },[defaultText, genre, year])
   const handleListDisplay = () => {
