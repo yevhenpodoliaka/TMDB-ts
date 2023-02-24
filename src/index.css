@@ -10,7 +10,13 @@ body{
   font-weight: 300;
   background-color: grey;
   background-image: url("./images/bg.jpg");
+background-attachment: fixed;
+
 }
+      
+        /* cursor: pointer; */
+
+
 ul{
   list-style: none;
 }

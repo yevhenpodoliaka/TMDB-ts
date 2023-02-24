@@ -36,7 +36,10 @@ const GalleryItem = ({
         to={`/movie/${id}`}
         state={{ from: location }}
       >
-        <img src={imageUrl} alt={title} />
+        <div className={style.imgSkeleton}>
+          <img src={imageUrl} alt={title} />
+        </div>     
+  
         <p className={style.title}>{title}</p>
         {vote_average > 0 && (
           <span className={style.rating}> {vote_average.toFixed(2)}</span>
