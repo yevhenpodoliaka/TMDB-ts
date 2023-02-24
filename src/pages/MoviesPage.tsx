@@ -27,9 +27,13 @@ const MoviesPage = () => {
   );
   const { page, query, year, genre } = params;
 
+  // console.log(page, query, year, genre )
+
   useEffect(() => {
+    // console.log("useEffect")
     setIsLoading(true);
     if (genre || year) {
+      //  console.log("useEffect if year/genres")
       const genreValue = genresFormatter(genre);
       fetchDiscoverMovies(Number(page), year, genreValue)
         .then(({ results, total_pages, total_results }) => {
@@ -40,7 +44,8 @@ const MoviesPage = () => {
         .catch(e => setError(e))
         .finally(() => setIsLoading(false));
     }
-    if (!query || query.trim() === '') {
+    if (page&&!year&&!genre&&!query) {
+      //  console.log("useEffect if trending")
       fetchTrendingMovies(Number(page))
         .then(({ results, total_pages, total_results }) => {
           setMovies(results);
@@ -50,7 +55,8 @@ const MoviesPage = () => {
         .catch(e => setError(e))
         .finally(() => setIsLoading(false));
     }
-    if (query) {
+    if (query&&!year&&!genre) {
+      //  console.log("useEffect if query")
       fetchQueryMovies(query, Number(page))
         .then(({ results, total_pages, total_results }) => {
           setMovies(results);

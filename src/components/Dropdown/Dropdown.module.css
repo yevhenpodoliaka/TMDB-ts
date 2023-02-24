@@ -4,15 +4,15 @@
 
 .dropdown {
     display: inline-block;
-    min-width: 250px;
+    width: 150px;
     text-align: center;
     position: relative;
 }
 
 .selectedText {
-    background-color: #47eded;
+    background-color: var(--tertiary-color);
     padding: 6px 20px;
-    border-bottom: 1px solid #37b0b0;
+    border-bottom: 1px solid var(--primary-color);
 }
 
 .selectedText::after {
@@ -44,12 +44,12 @@
 .option {
     list-style-type: none;
     padding: 6px 20px;
-    background: #47eded;
-    border-bottom: 1px solid #37b0b0;
+    background: var(--tertiary-color);
+    border-bottom: 1px solid var(--primary-color);
     cursor: pointer;
 }
 
 .option:hover {
-    background-color: #32a6a6;
+    background-color: var(--secondary-color);
     color: #ffffff;
 }

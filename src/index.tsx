@@ -13,6 +13,6 @@ root.render(
     <BrowserRouter basename='TMDB-ts'>
       <App/>
       </BrowserRouter>
-  </React.StrictMode>
+   </React.StrictMode>
 );
 
