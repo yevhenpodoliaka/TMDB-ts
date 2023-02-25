@@ -1,6 +1,7 @@
 export interface IMovie {
     id: number,
     title: string,
+    release_date:string,
     poster_path: string,
     genre_ids: number[],
     vote_average:number,
@@ -29,7 +30,7 @@ export interface IResponseById{
             name: string,
             origin_country:string
         }[],
-    release_date:Date,
+    release_date:string,
     revenue: number,
     runtime: number,
     vote_average: number,

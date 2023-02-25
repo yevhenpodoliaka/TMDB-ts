@@ -17,13 +17,15 @@
 }
 
 .rating {
+  font-style: 10px;
+  font-weight: bold;
   background-color: var(--tertiary-color);
   color: var(--primary-color);
-  padding: 4px;
-  border-radius: 8px;
+  padding: 2px;
+  border-radius: 0 0  8px 0;
   position: absolute;
-  top: 8px;
-  left: 8px;
+  top: 4px;
+  left: 4px;
 }
 
 .linkWrap {
@@ -34,9 +36,8 @@
 }
 
 .title {
-  font-size: 12px;
   font-weight: bold;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 }
 .genres {
   font-size: 10px;
@@ -51,21 +52,21 @@
 }
 @media screen and (min-width: 768px) {
   .galleryItem {
-    width: calc((100% - 45px) / 4);
+    width: calc((100% - 30px) / 3);
   }
     .imgSkeleton {
-      width: 165px;
-      height:247px;
+      width: 228px;
+      height:342px;
     }
-
+.rating {
+ padding: 4px;
+}
   .title {
-    font-size: 16px;
-    text-align: start;
+    font-size: 14px;
   }
 
   .genres {
-    font-size: 14px;
-    text-align: end;
+    font-size: 12px;
   }
 }
 

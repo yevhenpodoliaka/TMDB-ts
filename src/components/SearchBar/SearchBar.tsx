@@ -15,10 +15,10 @@ const SearchBar = () => {
     query: value,
     page:"1"
 }
-// EventType??????? FORM
-  const handleSubmit = (e: React.SyntheticEvent): void => {
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     if (value !== "") {
-    e.preventDefault();//?????????????????
+    e.preventDefault();
     setSearchParams({ ...params });
     setValue(""); 
     }

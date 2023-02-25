@@ -1,7 +1,6 @@
-import style from "./MovieDetails.module.css";
-import defaultPoster from "images/no-poster.jpg";
-import { IResponseById } from "interfaces";
-
+import style from './MovieDetails.module.css';
+import defaultPoster from 'images/no-poster.jpg';
+import { IResponseById } from 'interfaces';
 
 interface IProps {
   data: IResponseById;
@@ -9,44 +8,108 @@ interface IProps {
 
 const MovieDetails = ({ data }: IProps) => {
   const {
+    backdrop_path,
     budget,
     genres,
     homepage,
     title,
     original_title,
     overview,
-    popularity,
     poster_path,
-    // release_date,
+    release_date,
     revenue,
     runtime,
     vote_average,
     vote_count,
   } = data;
-
+  console.log(typeof release_date);
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
-
+    
   return (
-    <div className={style.card}>
+    <div
+      className={style.card}
+      style={{
+        backgroundImage: `linear-gradient(to right,
+           rgba(0, 224, 255, 0.6),
+            rgba(0, 133, 255, 0.6)),
+            url(${`https://image.tmdb.org/t/p/w500/${backdrop_path && backdrop_path}`})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'contain',
+      }}
+    >
       <div className={style.posterWrap}>
         <img src={posterUrl} alt=" movies poster" />
       </div>
       <div className={style.descriptionWrap}>
-       {title &&<h3>{title}</h3>}
-       {original_title &&<p>{ original_title}</p>}
-        <p>{genres?.map((i) =>i.name).join(" , ")}</p>
-        {/* <p>release date: {release_date}</p> */}
-       {vote_count>0 && <p>кількість голосів:<span className={style.value}>{vote_count}</span></p>}
-       {vote_average>0&& <p>рейтинг <span className={style.value}>{vote_average}</span></p>}
-       {revenue>0&& <p>дохід <span className={style.value}>{revenue}$</span></p>}
-        {popularity>0&&<p>популярність: <span className={style.value}>{popularity}</span></p>}
-       {homepage&& <p>офіційний сайт: <span className={style.value}>{homepage}</span></p>}
-       {runtime>0&& <p>тривалість <span className={style.value}>{runtime} хв</span></p>}
-       {budget>0 && <p>б'юджет <span className={style.value}>{budget}$</span></p>}
-        {overview && <p>Опис :</p>}
-        {overview &&<p className={style.value}>{overview}</p>}
+        <table>
+          {title && (
+            <thead>
+              <tr>
+                <th>{title}</th>
+              </tr>
+            </thead>
+          )}
+          <tbody>
+            {original_title && (
+              <tr>
+                <td>Оригінальна назва :</td>
+                <td>{original_title}</td>
+              </tr>
+            )}
+            {release_date && (
+              <tr>
+                <td>Дата релізу :</td>
+                <td>{release_date}</td>
+              </tr>
+            )}
+            {genres && (
+              <tr>
+                <td>Жанр :</td>
+                <td>{<p>{genres?.map(i => i.name).join(' , ')}</p>}</td>
+              </tr>
+            )}
+            {vote_count > 0 && (
+              <tr>
+                <td>Кількість голосів :</td>
+                <td>{vote_count}</td>
+              </tr>
+            )}
+            {vote_average > 0 && (
+              <tr>
+                <td>Рейтинг :</td>
+                <td>{vote_average}</td>
+              </tr>
+            )}
+            {revenue > 0 && (
+              <tr>
+                <td>Дохід :</td>
+                <td>{revenue} $</td>
+              </tr>
+            )}
+            {homepage && (
+              <tr>
+                <td>Сайт фільму :</td>
+                <td>{homepage}</td>
+              </tr>
+            )}
+            {runtime > 0 && (
+              <tr>
+                <td>Тривалість</td>
+                <td>{runtime}хв</td>
+              </tr>
+            )}
+            {budget > 0 && (
+              <tr>
+                <td>Б'юджет :</td>
+                <td>{budget} $</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+        {overview && <p style={{ fontWeight: 'bold' }}>Опис :</p>}
+        {overview && <p>{overview}</p>}
       </div>
     </div>
   );

@@ -3,14 +3,15 @@ import style from "./GalleryItem.module.css";
 import genresList from "genresUa.json";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { IMovie } from "interfaces";
 
-type Props = {
-  id: number;
-  title: string;
-  poster_path: string;
-  vote_average: number;
-  genre_ids: number[];
-};
+// type Props = {
+//   id: number;
+//   title: string;
+//   poster_path: string;
+//   vote_average: number;
+//   genre_ids: number[];
+// };
 
 const GalleryItem = ({
   id,
@@ -18,7 +19,8 @@ const GalleryItem = ({
   poster_path,
   vote_average,
   genre_ids,
-}: Props) => {
+  release_date
+}: IMovie) => {
   const location = useLocation();
   const imageUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
@@ -27,8 +29,9 @@ const GalleryItem = ({
   const movieGenres = genresList.genres
     .filter((i) => genre_ids.includes(i.id))
     .map(({ name }) => name)
-    .join(" , ");
-
+    .join(", ");
+ 
+ const year= release_date.slice(0,4)
   return (
     <li className={style.galleryItem}>
       <Link
@@ -44,7 +47,8 @@ const GalleryItem = ({
         {vote_average > 0 && (
           <span className={style.rating}> {vote_average.toFixed(2)}</span>
         )}
-        <p className={style.genres}>{movieGenres}</p>
+        <p className={style.genres}>{movieGenres}, {year}</p>
+       
       </Link>
     </li>
   );

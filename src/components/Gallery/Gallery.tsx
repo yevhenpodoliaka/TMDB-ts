@@ -12,13 +12,14 @@ const Gallery = ({movies=[]}:Props) => {
   return (
     <ul className={style.gallery}>
 
-      {movies.map(({ id, title, poster_path,vote_average,genre_ids}) => <GalleryItem
+      {movies.map(({ id, title, poster_path,vote_average,genre_ids,release_date}) => <GalleryItem
         key={id}
         id={id}
         title={title}
         poster_path={poster_path}
         vote_average={vote_average}
-        genre_ids={genre_ids} />)}
+        genre_ids={genre_ids} 
+        release_date={release_date} />)}
         
       </ul>
    
