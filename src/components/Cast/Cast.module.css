@@ -1,7 +1,12 @@
-.cast {
-  padding: 15px;
-}
-
+  .cast {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+ .castItem {
+   width: calc((100% - 8px) / 2);
+ }
 .name {
   font-size: 14px;
 }
@@ -9,11 +14,7 @@
   font-size: 14px;
 }
 @media screen and (min-width: 768px) {
-  .cast {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+
   .castItem {
     width: calc((100% - 40px) / 6);
   }

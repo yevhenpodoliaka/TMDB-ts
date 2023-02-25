@@ -22,7 +22,7 @@ const MovieDetails = ({ data }: IProps) => {
     vote_average,
     vote_count,
   } = data;
-  console.log(typeof release_date);
+ 
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
