@@ -32,11 +32,11 @@ const MovieDetails = ({ data }: IProps) => {
       className={style.card}
       style={{
         backgroundImage: `linear-gradient(to right,
-           rgba(0, 224, 255, 0.6),
-            rgba(0, 133, 255, 0.6)),
+           rgba(92, 142, 149, 0.6),
+            rgba(156, 180, 203, 0.6)),
             url(${`https://image.tmdb.org/t/p/w500/${backdrop_path && backdrop_path}`})`,
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'contain',
+        backgroundSize: 'cover',
       }}
     >
       <div className={style.posterWrap}>

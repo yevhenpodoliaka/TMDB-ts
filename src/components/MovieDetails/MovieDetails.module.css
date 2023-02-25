@@ -26,6 +26,13 @@ td:nth-child(1) {
   .descriptionWrap {
     width: 60%;
   }
+    td,th {
+      font-size: 14px;
+      padding: 2px;
+    }
+    .card p{
+      font-size: 14px;
+    }
 }
 
 

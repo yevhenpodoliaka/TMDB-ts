@@ -41,6 +41,6 @@
 
 .input::placeholder {
     font: inherit;
-    color: #f1f1f1;
+    color: hsla(0, 0%, 95%, 0.7);
     font-size: 14px;
 }

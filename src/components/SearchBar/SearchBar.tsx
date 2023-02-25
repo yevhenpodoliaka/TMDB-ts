@@ -34,7 +34,7 @@ const SearchBar = () => {
         type="text"
         autoComplete="off"
         autoFocus
-        placeholder="search film ..."
+        placeholder="введіть слово для пошуку ..."
       />
       <button className={style.btnSearch} type="submit" disabled={value===""}>
         <FiSearch color="white" />
