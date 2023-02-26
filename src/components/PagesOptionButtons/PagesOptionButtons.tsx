@@ -23,7 +23,10 @@ const PagesOptionButtons = ({ totalPages }: IProps) => {
     });
   };
   return (
+    <>
+      <p style={{textAlign:"center"}}>сторінка {page} з {totalPages }</p>
     <div className={style.wrap}>
+      
       {Number(page) > 1 && (
         <Button
           aria-label="prev page"
@@ -48,7 +51,8 @@ const PagesOptionButtons = ({ totalPages }: IProps) => {
           <FcNext />
         </Button>
       )}
-    </div>
+      </div>
+      </>
   );
 };
 
