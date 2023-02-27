@@ -1,6 +1,12 @@
 import style from './MovieDetails.module.css';
 import defaultPoster from 'images/no-poster.jpg';
 import { IResponseById } from 'interfaces';
+import AboutMovie from '../AboutMovie/AboutMovie';
+import GoBackLink from 'components/GoBackLink/GoBackLink';
+import { useState } from 'react';
+import Trailer from 'components/Trailer/Trailer';
+import Cast from 'components/Cast/Cast';
+import MovieDetailsOptions from 'components/MovieDetailsOptions/MovieDetailsOptions';
 
 interface IProps {
   data: IResponseById;
@@ -21,97 +27,66 @@ const MovieDetails = ({ data }: IProps) => {
     runtime,
     vote_average,
     vote_count,
+    videos,
   } = data;
- 
+
+  const [currentInfo, setCurrentInfo] = useState('about');
   const posterUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
-    
+  const key = videos?.results[0]?.key;
+
+
+  const options =key? [
+    { value: 'about', label: 'Про фільм' },
+    { value: 'cast', label: 'Актори' },
+    { value: 'trailer', label: 'Трейлер' },
+  ]:[
+    { value: 'about', label: 'Про фільм' },
+    { value: 'cast', label: 'Актори' },
+  ];
+
   return (
-    <div
-      className={style.card}
-      style={{
-        backgroundImage: `linear-gradient(to right,
+    <>
+      <GoBackLink />
+      <MovieDetailsOptions options={options} onChange={setCurrentInfo} />
+      <div
+        className={style.card}
+        style={{
+          backgroundImage: `linear-gradient(to right,
            rgba(92, 142, 149, 0.6),
             rgba(156, 180, 203, 0.6)),
-            url(${`https://image.tmdb.org/t/p/w500/${backdrop_path && backdrop_path}`})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-      }}
-    >
-      <div className={style.posterWrap}>
-        <img src={posterUrl} alt=" movies poster" />
-      </div>
-      <div className={style.descriptionWrap}>
-        <table>
-          {title && (
-            <thead>
-              <tr>
-                <th>{title}</th>
-              </tr>
-            </thead>
+            url(${`https://image.tmdb.org/t/p/w500/${
+              backdrop_path && backdrop_path
+            }`})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
+        <div className={style.posterWrap}>
+          <img src={posterUrl} alt=" movies poster" />
+        </div>
+        <div className={style.descriptionWrap}>
+          {currentInfo === 'about' && (
+            <AboutMovie
+              title={title}
+              original_title={original_title}
+              release_date={release_date}
+              genres={genres}
+              vote_count={vote_count}
+              vote_average={vote_average}
+              revenue={revenue}
+              homepage={homepage}
+              runtime={runtime}
+              budget={budget}
+              overview={overview}
+            />
           )}
-          <tbody>
-            {original_title && (
-              <tr>
-                <td>Оригінальна назва :</td>
-                <td>{original_title}</td>
-              </tr>
-            )}
-            {release_date && (
-              <tr>
-                <td>Дата релізу :</td>
-                <td>{release_date}</td>
-              </tr>
-            )}
-            {genres && (
-              <tr>
-                <td>Жанр :</td>
-                <td>{<p>{genres?.map(i => i.name).join(' , ')}</p>}</td>
-              </tr>
-            )}
-            {vote_count > 0 && (
-              <tr>
-                <td>Кількість голосів :</td>
-                <td>{vote_count}</td>
-              </tr>
-            )}
-            {vote_average > 0 && (
-              <tr>
-                <td>Рейтинг :</td>
-                <td>{vote_average}</td>
-              </tr>
-            )}
-            {revenue > 0 && (
-              <tr>
-                <td>Дохід :</td>
-                <td>{revenue} $</td>
-              </tr>
-            )}
-            {homepage && (
-              <tr>
-                <td>Сайт фільму :</td>
-                <td>{homepage}</td>
-              </tr>
-            )}
-            {runtime > 0 && (
-              <tr>
-                <td>Тривалість</td>
-                <td>{runtime}хв</td>
-              </tr>
-            )}
-            {budget > 0 && (
-              <tr>
-                <td>Б'юджет :</td>
-                <td>{budget} $</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        {overview && <p style={{ fontWeight: 'bold' }}>Опис :</p>}
-        {overview && <p>{overview}</p>}
+          {currentInfo === 'cast' && <Cast />}
+          {currentInfo === 'trailer' && key && <Trailer videoKey={key} />}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

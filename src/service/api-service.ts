@@ -44,7 +44,7 @@ export async function fetchQueryMovies(query: string, page: number = 1) {
 }
 
 export async function fetchMovieById(movieId: string) {
-  const url = `${BASE_URL}/movie/${movieId}?api_key=${KEY}&language=uk-UA`;
+  const url = `${BASE_URL}/movie/${movieId}?api_key=${KEY}&language=uk-UA&append_to_response=videos`;
   const response = await fetch(url);
   if (!response.ok) {
     const message = `Error Status ${response.status}`;

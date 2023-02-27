@@ -35,6 +35,25 @@ export interface IResponseById{
     runtime: number,
     vote_average: number,
     vote_count: number
+    videos: {
+        results: {
+            key:string
+        }[]
+    }
+}
+
+export interface IAboutMovie {
+  title: string;
+  original_title: string;
+  release_date: string;
+  genres: { id: number; name: string }[];
+  vote_count: number;
+  vote_average: number;
+  revenue: number;
+  homepage: string;
+  runtime: number;
+  budget: number;
+  overview:string
 }
 export interface IActor{
     id?: number,

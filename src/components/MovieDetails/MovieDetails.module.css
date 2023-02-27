@@ -5,16 +5,12 @@
 }
 .posterWrap {
   padding: 15px;
+  width: 168px;
 }
 .descriptionWrap {
   padding: 15px;
 }
-th{
-  text-align: start;
-}
-td:nth-child(1) {
- font-weight: bold;
-}
+
 @media screen and (min-width: 768px) {
   .card {
     flex-direction: row;
@@ -26,13 +22,6 @@ td:nth-child(1) {
   .descriptionWrap {
     width: 60%;
   }
-    td,th {
-      font-size: 14px;
-      padding: 2px;
-    }
-    .card p{
-      font-size: 14px;
-    }
 }
 
 

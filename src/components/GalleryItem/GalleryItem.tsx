@@ -5,14 +5,6 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { IMovie } from "interfaces";
 
-// type Props = {
-//   id: number;
-//   title: string;
-//   poster_path: string;
-//   vote_average: number;
-//   genre_ids: number[];
-// };
-
 const GalleryItem = ({
   id,
   title,
@@ -21,7 +13,9 @@ const GalleryItem = ({
   genre_ids,
   release_date
 }: IMovie) => {
+
   const location = useLocation();
+  
   const imageUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;

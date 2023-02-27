@@ -1,0 +1,45 @@
+.radioButtonsContainer {
+  display: inline-block;
+}
+
+.radioButtonsContainer :not(:last-child) {
+  margin-right: 10px;
+}
+
+.radioButtonsContainer input {
+  display: none;
+}
+
+.radioButtonsContainer span {
+  display: inline-block;
+  cursor: pointer;
+  padding:8px;
+  border-radius: 15px 0 15px 0;
+  user-select: none;
+  font-weight: bold;
+
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+
+}
+
+
+ .radioButtonsContainer input:checked + span {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(8px);
+  top: 8px;
+ box-shadow: -6px -6px 6px 0px #0d253f;
+ }
+
+
+
+ .radioButtonsContainer label:hover span{
+  background-color:var(--tertiary-color);
+  color: black;
+}
+
+
+
