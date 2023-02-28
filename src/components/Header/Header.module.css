@@ -9,7 +9,9 @@
   transform: scale(1.02);
   box-shadow: var(--box-shadow);
 }
-
+/* .logoLink{
+  display: inline-block;
+} */
 @media screen and (min-width: 768px) {
   .logo {
     width: 80px;
@@ -20,4 +22,17 @@
 .header {
   padding: 20px;
   background-color: var(--primary-color);
+}
+
+nav{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.navLink{
+text-transform: uppercase;
+color: var(--secondary-color);
+}
+.navLink.active{
+  color: white;
 }

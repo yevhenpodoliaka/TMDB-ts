@@ -31,6 +31,7 @@ const MoviesPage = () => {
 
   useEffect(() => {
     // console.log("useEffect")
+
     setIsLoading(true);
     if (genre || year) {
       //  console.log("useEffect if year/genres")

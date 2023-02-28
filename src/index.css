@@ -13,8 +13,6 @@ body {
   background-attachment: fixed;
 }
 
-/* cursor: pointer; */
-
 ul {
   list-style: none;
 }
@@ -57,17 +55,6 @@ main {
     width: 1280px;
   }
 }
-
-.notFoundPage {
-  width: 100%;
-  height: 100%;
-  background-image: url('images/not-found.jpg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  text-align: center;
-}
-
 
 ::-webkit-scrollbar {
   width: 8px;
