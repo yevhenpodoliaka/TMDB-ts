@@ -70,3 +70,26 @@ main {
   scrollbar-color: var(--tertiary-color) var(--secondary-color);
 }
 
+
+.navLink {
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  transition-property: transform, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: linear;
+}
+.navLink:hover{
+  color: var(--tertiary-color);
+  transform: scale(1.02);
+  box-shadow: var(--box-shadow);
+
+}
+.navLink.active {
+  color: white;
+}
+.navLink.navLink.active:hover {
+  color: var(--tertiary-color);
+  transform: scale(1.02);
+  box-shadow: var(--box-shadow);
+
+}

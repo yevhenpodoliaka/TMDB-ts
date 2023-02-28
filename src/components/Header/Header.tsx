@@ -1,29 +1,33 @@
 import style from './Header.module.css';
 import SearchBar from '../SearchBar/SearchBar';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, NavLink } from 'react-router-dom';
 import logoImg from 'images/logo.svg';
 import SearchOptions from 'components/SearchOptions/SearchOptions';
-// import {AiFillHome}from "react-icons/ai"
-// import { FiLogIn } from 'react-icons/fi';
+import {AiFillHome}from "react-icons/ai"
+import AuthNav from 'components/AuthNav/AuthNav';
 
 const Header = () => {
   const { movieId } = useParams();
 
   return (
     <header className={style.header}>
-      <Link className={style.logoLink} to="/?page=1">
+       <div className={style.navContainer}>
+      <Link to="/?page=1">
         <img className={style.logo} src={logoImg} alt="logo" />
       </Link>
+     
+        <nav>
+      <AuthNav/>
+      <NavLink className="navLink" to="/"><AiFillHome/></NavLink>
+      <NavLink className="navLink" to="library">бібліотека</NavLink>
+      </nav>
+      </div>
+  
+   {!movieId && <SearchBar />}
+        {!movieId && <SearchOptions />} 
 
-      {/* <nav>
-      <Link className={style.navLink} to="/"><AiFillHome/></Link>
-      <Link className={style.navLink} to="/library">бібліотека</Link>
-      <Link className={style.navLink} to="/login"><FiLogIn/></Link>
-      </nav> */}
-
-      {!movieId && <SearchBar />}
-      {!movieId && <SearchOptions />}
-    </header>
+      </header>
+  
   );
 };
 
