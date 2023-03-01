@@ -24,21 +24,19 @@ const Dropdown = ({ optionsList, defaultText, searchParam }: IProps) => {
     () => Object.fromEntries([...searchParams]),
     [searchParams]
   );
-  const { year,genre} = params;
-
+  const { year, genre } = params;
 
   useEffect(() => {
     if (!year && !genre) {
-      setDefaultSelectText(defaultText)
+      setDefaultSelectText(defaultText);
     }
-    if(year && defaultText==="рік"){
-      setDefaultSelectText(year) 
+    if (year && defaultText === 'рік') {
+      setDefaultSelectText(year);
     }
-    if (genre && defaultText==="жанр"){
-    setDefaultSelectText(genre);
+    if (genre && defaultText === 'жанр') {
+      setDefaultSelectText(genre);
     }
-    
-  },[defaultText, genre, year])
+  }, [defaultText, genre, year]);
   const handleListDisplay = () => {
     setShowOptionList(prevState => !prevState);
   };
@@ -54,9 +52,35 @@ const Dropdown = ({ optionsList, defaultText, searchParam }: IProps) => {
       : setSearchParams({ ...params, genre: name });
   };
 
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (
+      event.target instanceof HTMLElement &&
+      !event.target.closest(`#${defaultText}`)
+    ) {
+      setShowOptionList(false);
+    }
+  };
+
+  const lockPage = () => {
+    document.body.style.overflow = 'hidden';
+  };
+
+  const unlockPage = () => {
+    document.body.style.overflow = '';
+  };
+
+  if (showOptionList) {
+    lockPage();
+    document.addEventListener('click', handleOutsideClick);
+  } else {
+    unlockPage();
+    document.removeEventListener('click', handleOutsideClick);
+  }
+
   return (
     <div className={style.dropdown}>
       <div
+        id={defaultText}
         className={
           showOptionList
             ? `${style.selectedText} ${style.active}`

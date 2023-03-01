@@ -1,10 +1,10 @@
 import style from './Header.module.css';
 import SearchBar from '../SearchBar/SearchBar';
-import { useParams, Link, NavLink } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import logoImg from 'images/logo.svg';
 import SearchOptions from 'components/SearchOptions/SearchOptions';
-import { AiFillHome } from 'react-icons/ai';
 import AuthNav from 'components/AuthNav/AuthNav';
+import SiteNav from '../SiteNav/SiteNav';
 
 const Header = () => {
   const { movieId } = useParams();
@@ -17,12 +17,7 @@ const Header = () => {
         </Link>
 
         <nav className={style.nav}>
-          <NavLink className="navLink" to="/?page=1">
-            <AiFillHome fontSize="14px"/>
-          </NavLink>
-          <NavLink className="navLink" to="library">
-            бібліотека
-          </NavLink>
+          <SiteNav />
           <AuthNav />
         </nav>
       </div>
