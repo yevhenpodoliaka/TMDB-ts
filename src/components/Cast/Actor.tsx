@@ -1,17 +1,17 @@
 import defaultPoster from 'images/no-poster.jpg';
 import { IActor } from 'interfaces';
-import style from "./Cast.module.css"
+import styles from './Cast.module.css';
 
- const Actor=({ character, name, profile_path }:IActor)=> {
+const Actor = ({ character, name, profile_path }: IActor) => {
   const imageUrl = profile_path
     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
     : `${defaultPoster}`;
   return (
-    <li className={style.castItem}>
+    <li className={styles.castItem}>
       <img src={imageUrl} alt={name} />
-      <p className={style.name}>{name}</p>
-      <p className={style.role}>{character}</p>
+      <p className={styles.name}>{name}</p>
+      <p className={styles.role}>{character}</p>
     </li>
   );
-}
-export default Actor
+};
+export default Actor;

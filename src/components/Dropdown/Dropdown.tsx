@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import style from './Dropdown.module.css';
+import styles from './Dropdown.module.css';
 
 interface Option {
   id: number;
@@ -78,23 +78,23 @@ const Dropdown = ({ optionsList, defaultText, searchParam }: IProps) => {
   }
 
   return (
-    <div className={style.dropdown}>
+    <div className={styles.dropdown}>
       <div
         id={defaultText}
         className={
           showOptionList
-            ? `${style.selectedText} ${style.active}`
-            : `${style.selectedText}`
+            ? `${styles.selectedText} ${styles.active}`
+            : `${styles.selectedText}`
         }
         onClick={handleListDisplay}
       >
         {defaultSelectText}
       </div>
       {showOptionList && (
-        <ul className={style.optionList}>
+        <ul className={styles.optionList}>
           {optionsList.map(({ id, name }) => (
             <li
-              className={style.option}
+              className={styles.option}
               key={id}
               onClick={e => handleOptionClick(e, name)}
             >

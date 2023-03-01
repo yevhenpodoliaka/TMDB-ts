@@ -1,4 +1,4 @@
-import style from './MovieDetails.module.css';
+import styles from './MovieDetails.module.css';
 import defaultPoster from 'images/no-poster.jpg';
 import { IResponseById } from 'interfaces';
 import AboutMovie from '../AboutMovie/AboutMovie';
@@ -36,22 +36,23 @@ const MovieDetails = ({ data }: IProps) => {
     : `${defaultPoster}`;
   const key = videos?.results[0]?.key;
 
-
-  const options =key? [
-    { value: 'about', label: 'Про фільм' },
-    { value: 'cast', label: 'Актори' },
-    { value: 'trailer', label: 'Трейлер' },
-  ]:[
-    { value: 'about', label: 'Про фільм' },
-    { value: 'cast', label: 'Актори' },
-  ];
+  const options = key
+    ? [
+        { value: 'about', label: 'Про фільм' },
+        { value: 'cast', label: 'Актори' },
+        { value: 'trailer', label: 'Трейлер' },
+      ]
+    : [
+        { value: 'about', label: 'Про фільм' },
+        { value: 'cast', label: 'Актори' },
+      ];
 
   return (
     <>
       <GoBackLink />
       <MovieDetailsOptions options={options} onChange={setCurrentInfo} />
       <div
-        className={style.card}
+        className={styles.card}
         style={{
           backgroundImage: `linear-gradient(to right,
            rgba(92, 142, 149, 0.6),
@@ -63,10 +64,10 @@ const MovieDetails = ({ data }: IProps) => {
           backgroundSize: 'cover',
         }}
       >
-        <div className={style.posterWrap}>
+        <div className={styles.posterWrap}>
           <img src={posterUrl} alt=" movies poster" />
         </div>
-        <div className={style.descriptionWrap}>
+        <div className={styles.descriptionWrap}>
           {currentInfo === 'about' && (
             <AboutMovie
               title={title}

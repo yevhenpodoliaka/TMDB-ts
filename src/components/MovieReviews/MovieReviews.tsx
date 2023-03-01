@@ -1,4 +1,4 @@
-import style from "./MovieReviews.module.css"
+import styles from "./MovieReviews.module.css"
 import { IReview } from 'interfaces';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -25,7 +25,7 @@ const MovieReviews = () => {
       {reviews?.length === 0 ? (
         <p>Нажаль ми не маємо відгуків/оглядів про цей фільм</p>
       ) : (
-        <ul className={style.reviewslist }>
+        <ul className={styles.reviewsList }>
           {reviews?.map(({ id, author, content }) => {
             return (
               <MovieReviewsItem key={id} author={author} content={content} />

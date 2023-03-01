@@ -1,6 +1,6 @@
 
 
- const ErrorPoster = () => {
+const ErrorPoster = () => {
   return (
       <div style={{ width:"100%",height:"100%", backgroundColor:"#f1f1f1",textAlign: "center", color:"black"}}>
           <h1>Нажаль сталася помилка(((</h1> 

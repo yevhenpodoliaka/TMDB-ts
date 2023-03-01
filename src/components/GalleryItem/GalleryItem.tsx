@@ -1,9 +1,9 @@
-import defaultPoster from "images/no-poster.jpg";
-import style from "./GalleryItem.module.css";
-import genresList from "genresUa.json";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { IMovie } from "interfaces";
+import defaultPoster from 'images/no-poster.jpg';
+import styles from './GalleryItem.module.css';
+import genresList from 'genresUa.json';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { IMovie } from 'interfaces';
 
 const GalleryItem = ({
   id,
@@ -11,38 +11,38 @@ const GalleryItem = ({
   poster_path,
   vote_average,
   genre_ids,
-  release_date
+  release_date,
 }: IMovie) => {
-
   const location = useLocation();
-  
+
   const imageUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
 
   const movieGenres = genresList.genres
-    .filter((i) => genre_ids.includes(i.id))
+    .filter(i => genre_ids.includes(i.id))
     .map(({ name }) => name)
-    .join(", ");
- 
- const year= release_date.slice(0,4)
+    .join(', ');
+
+  const year = release_date.slice(0, 4);
   return (
-    <li className={style.galleryItem}>
+    <li className={styles.galleryItem}>
       <Link
-        className={style.linkWrap}
+        className={styles.linkWrap}
         to={`/movie/${id}`}
         state={{ from: location }}
       >
-        <div className={style.imgSkeleton}>
+        <div className={styles.imgSkeleton}>
           <img src={imageUrl} alt={title} />
-        </div>     
-  
-        <p className={style.title}>{title}</p>
+        </div>
+
+        <p className={styles.title}>{title}</p>
         {vote_average > 0 && (
-          <span className={style.rating}> {vote_average.toFixed(2)}</span>
+          <span className={styles.rating}> {vote_average.toFixed(2)}</span>
         )}
-        <p className={style.genres}>{movieGenres}, {year}</p>
-       
+        <p className={styles.genres}>
+          {movieGenres}, {year}
+        </p>
       </Link>
     </li>
   );

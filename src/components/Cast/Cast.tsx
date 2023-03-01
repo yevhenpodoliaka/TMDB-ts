@@ -1,9 +1,9 @@
-import style from "./Cast.module.css";
-import { fetchCast } from "service/api-service";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Actor from "./Actor";
-import { IActor } from "interfaces";
+import styles from './Cast.module.css';
+import { fetchCast } from 'service/api-service';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Actor from './Actor';
+import { IActor } from 'interfaces';
 
 const Cast = () => {
   const [error, setError] = useState<Error>();
@@ -14,20 +14,17 @@ const Cast = () => {
     if (movieId) {
       fetchCast(movieId)
         .then(res => setCast(res.cast))
-        .catch(setError)
-  
+        .catch(setError);
     }
-    
   }, [movieId]);
 
   return (
-
     <>
-      {error&&<p>винткла помилка при загрузці даних</p>}
+      {error && <p>винткла помилка при загрузці даних</p>}
       {cast?.length === 0 ? (
         <p>Нажаль ми не маємо інформації щодо акторського складу</p>
       ) : (
-        <ul className={style.cast}>
+        <ul className={styles.cast}>
           {cast?.map(({ id, character, name, profile_path }) => {
             return (
               <Actor
@@ -41,7 +38,6 @@ const Cast = () => {
         </ul>
       )}
     </>
-
   );
 };
 

@@ -1,4 +1,4 @@
-import style from './Button.module.css';
+import styles from './Button.module.css';
 
 interface IProps {
   onClick: () => void;
@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Button = ({ children, onClick }: IProps) => (
-  <button className={style.button} type="button" onClick={onClick}>
+  <button className={styles.button} type="button" onClick={onClick}>
     {children}
   </button>
 );

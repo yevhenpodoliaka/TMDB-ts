@@ -1,5 +1,5 @@
 import { IAboutMovie } from 'interfaces';
-import style from './AboutMovie.module.css';
+import styles from './AboutMovie.module.css';
 
 const AboutMovie = ({
   title,
@@ -15,7 +15,7 @@ const AboutMovie = ({
   overview,
 }: IAboutMovie) => {
   return (
-    <div className={style.descriptionWrap}>
+    <div className={styles.descriptionWrap}>
       <table>
         {title && (
           <thead>
@@ -81,8 +81,8 @@ const AboutMovie = ({
           )}
         </tbody>
       </table>
-      {overview && <p className={style.overviewTitle}>Опис :</p>}
-      {overview && <p className={style.overview}>{overview}</p>}
+      {overview && <p className={styles.overviewTitle}>Опис :</p>}
+      {overview && <p className={styles.overview}>{overview}</p>}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-// import style from './SiteNav.module.css';
 import { NavLink } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
 

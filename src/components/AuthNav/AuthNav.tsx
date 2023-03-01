@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import style from './AuthNav.module.css';
+import styles from './AuthNav.module.css';
 
 import { FiLogIn } from 'react-icons/fi';
 
@@ -16,7 +16,7 @@ const AuthNav = () => {
           Вийти
         </button>
       ) : (
-        <div className={style.authNav}>
+        <div className={styles.authNav}>
           <FiLogIn
             fontSize="14px"
             onClick={() => setIsOpen(!isOpen)}

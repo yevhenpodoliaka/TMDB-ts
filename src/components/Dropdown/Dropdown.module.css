@@ -1,60 +1,56 @@
 .title {
-    text-align: center;
+  text-align: center;
 }
 
 .dropdown {
-    display: inline-block;
-    width: 130px;
-    text-align: center;
-    position: relative;
- 
-
+  display: inline-block;
+  width: 130px;
+  text-align: center;
+  position: relative;
 }
 
 .selectedText {
-    background-color: var(--tertiary-color);
-    padding: 6px 20px;
-    border-bottom: 1px solid var(--primary-color);
-    /* border-radius: 15px 0 15px 0; */
+  background-color: var(--tertiary-color);
+  padding: 6px 20px;
+  border-bottom: 1px solid var(--primary-color);
+  /* border-radius: 15px 0 15px 0; */
 }
 
 .selectedText::after {
-    content: "";
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    border: 7px solid transparent;
-    border-color: #fff transparent transparent transparent;
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  border: 7px solid transparent;
+  border-color: #fff transparent transparent transparent;
 }
 
 .selectedText.active::after {
-    top: 8px;
-    border-color: transparent transparent #fff transparent;
+  top: 8px;
+  border-color: transparent transparent #fff transparent;
 }
 
-
 .optionList {
-    z-index: 111;
-    position: absolute;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    height: 520px;
-    overflow: auto;
- 
+  z-index: 111;
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 520px;
+  overflow: auto;
 }
 
 .option {
-    list-style-type: none;
-    padding: 6px 20px;
-    background: var(--tertiary-color);
-    border-bottom: 1px solid var(--primary-color);
-    cursor: pointer;
-    /* border-radius: 15px 0 15px 0; */
+  list-style-type: none;
+  padding: 6px 20px;
+  background: var(--tertiary-color);
+  border-bottom: 1px solid var(--primary-color);
+  cursor: pointer;
+  /* border-radius: 15px 0 15px 0; */
 }
 
 .option:hover {
-    background-color: var(--secondary-color);
-    color: #ffffff;
+  background-color: var(--secondary-color);
+  color: #ffffff;
 }

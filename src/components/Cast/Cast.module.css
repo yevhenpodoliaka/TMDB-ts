@@ -1,26 +1,22 @@
-  .cast {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
- .castItem {
-   width: calc((100% - 8px) / 2);
-  
- }
- .castItem img{
-  border-radius:  15px 0 15px 0;
- 
- }
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.castItem {
+  width: calc((100% - 8px) / 2);
+}
+.castItem img {
+  border-radius: 15px 0 15px 0;
+}
 .name {
   font-size: 10px;
   font-weight: bold;
 }
 .role {
   font-size: 10px;
-
 }
 @media screen and (min-width: 768px) {
-
   .castItem {
     width: calc((100% - 40px) / 6);
   }

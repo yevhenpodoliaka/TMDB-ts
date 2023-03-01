@@ -10,7 +10,7 @@ export default function GoBackLink() {
   const backLinkHref = location.state ? location.state?.from : backPage;
   return (
     <>
-      <Link to={backLinkHref}><FcUpLeft fontSize={35}/></Link>
+      <Link to={backLinkHref}><FcUpLeft fontSize={25}/></Link>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import style from './Header.module.css';
+import styles from './Header.module.css';
 import SearchBar from '../SearchBar/SearchBar';
 import { useParams, Link } from 'react-router-dom';
 import logoImg from 'images/logo.svg';
@@ -10,13 +10,12 @@ const Header = () => {
   const { movieId } = useParams();
 
   return (
-    <header className={style.header}>
-      <div className={style.navContainer}>
+    <header className={styles.header}>
+      <div className={styles.navContainer}>
         <Link to="/?page=1">
-          <img className={style.logo} src={logoImg} alt="logo" />
+          <img className={styles.logo} src={logoImg} alt="logo" />
         </Link>
-
-        <nav className={style.nav}>
+        <nav className={styles.nav}>
           <SiteNav />
           <AuthNav />
         </nav>

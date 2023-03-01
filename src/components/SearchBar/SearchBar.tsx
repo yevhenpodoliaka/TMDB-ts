@@ -1,34 +1,33 @@
-import { useState } from "react";
-import style from "./SearchBar.module.css";
-import { FiSearch } from "react-icons/fi";
-import { useSearchParams } from "react-router-dom";
+import { useState } from 'react';
+import styles from './SearchBar.module.css';
+import { FiSearch } from 'react-icons/fi';
+import { useSearchParams } from 'react-router-dom';
 
 const SearchBar = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   const [, setSearchParams] = useSearchParams();
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setValue(e.currentTarget.value);
   };
 
   const params = {
     query: value,
-    page:"1"
-}
+    page: '1',
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
-    if (value !== "") {
-    e.preventDefault();
-    setSearchParams({ ...params });
-    setValue(""); 
+    if (value !== '') {
+      e.preventDefault();
+      setSearchParams({ ...params });
+      setValue('');
     }
- 
   };
 
   return (
-    <form className={style.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <input
-        className={style.input}
+        className={styles.input}
         onChange={handleChange}
         value={value}
         type="text"
@@ -36,7 +35,11 @@ const SearchBar = () => {
         autoFocus
         placeholder="введіть слово для пошуку ..."
       />
-      <button className={style.btnSearch} type="submit" disabled={value===""}>
+      <button
+        className={styles.btnSearch}
+        type="submit"
+        disabled={value === ''}
+      >
         <FiSearch color="white" />
       </button>
     </form>

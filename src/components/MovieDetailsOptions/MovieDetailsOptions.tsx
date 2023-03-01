@@ -1,4 +1,4 @@
-import style from './MovieDetailsOptions.module.css';
+import styles from './MovieDetailsOptions.module.css';
 import { useState } from 'react';
 
 interface IOption {
@@ -20,7 +20,7 @@ const MovieDetailsOptions = ({ options, onChange }: IOptionList) => {
   };
 
   return (
-    <div className={style.radioButtonsContainer}>
+    <div className={styles.radioButtonsContainer}>
       {options.map(({ value, label }) => (
         <label key={value}>
           <input
