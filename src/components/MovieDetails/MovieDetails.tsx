@@ -4,7 +4,7 @@ import { IResponseById } from 'interfaces';
 import AboutMovie from '../AboutMovie/AboutMovie';
 import GoBackLink from 'components/GoBackLink/GoBackLink';
 import { useState } from 'react';
-import Trailer from 'components/Trailer/Trailer';
+import YoutubePlayer from '../YoutubePlayer/YoutubePlayer';
 import Cast from 'components/Cast/Cast';
 import MovieDetailsOptions from 'components/MovieDetailsOptions/MovieDetailsOptions';
 
@@ -84,7 +84,7 @@ const MovieDetails = ({ data }: IProps) => {
             />
           )}
           {currentInfo === 'cast' && <Cast />}
-          {currentInfo === 'trailer' && key && <Trailer videoKey={key} />}
+          {currentInfo === 'trailer' && key && <YoutubePlayer videoKey={key} />}
         </div>
       </div>
     </>
