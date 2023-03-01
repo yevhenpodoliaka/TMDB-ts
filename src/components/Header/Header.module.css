@@ -1,6 +1,6 @@
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 80px;
+  height: 80px;
   transition-property: transform, box-shadow;
   transition-duration: 250ms;
   transition-timing-function: linear;
@@ -10,26 +10,26 @@
   box-shadow: var(--box-shadow);
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   .logo {
     width: 80px;
     height: 80px;
   }
-}
+} */
 
 .header {
   padding: 20px;
   background-color: var(--primary-color);
 }
-.navContainer{
-display:flex;
-align-items: center;
-justify-content: space-between;
+.navContainer {
+  display: flex;
 }
 
 /*!!!!! navLink in index.css !!!!!!*/
-nav{
+.nav {
+  margin-left: auto;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 8px;
 }

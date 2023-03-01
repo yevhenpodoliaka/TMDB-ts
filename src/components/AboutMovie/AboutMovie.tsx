@@ -12,7 +12,7 @@ const AboutMovie = ({
   homepage,
   runtime,
   budget,
-  overview
+  overview,
 }: IAboutMovie) => {
   return (
     <div className={style.descriptionWrap}>
