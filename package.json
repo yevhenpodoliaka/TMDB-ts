@@ -2,7 +2,6 @@
   "name": "tmdb",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yevhenpodoliaka.github.io/TMDB-ts",
   "dependencies": {
     "@types/node": "^16.18.11",
     "@types/react": "^18.0.26",
@@ -18,7 +17,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint:js": "eslint src/**/*.{ts,tsx}"
+    "lint:js": "eslint src/**/*.{ts,tsx}",
+    "predeploy":"npm run build",
+    "deploy":"netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
