@@ -30,6 +30,7 @@ const PagesOptionButtons = ({ totalPages }: IProps) => {
       <div className={styles.wrap}>
         {Number(page) > 1 && (
           <Button
+            type="button"
             aria-label="prev page"
             onClick={() => {
               setSearchParams({
@@ -45,6 +46,7 @@ const PagesOptionButtons = ({ totalPages }: IProps) => {
         )}
         {Number(page) !== totalPages && (
           <Button
+            type="button"
             aria-label="next page"
             onClick={() => {
               setSearchParams({

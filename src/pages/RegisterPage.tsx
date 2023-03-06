@@ -1,9 +1,19 @@
+import RegisterForm from "components/Forms/RegisterForm"
+import { IStateForm} from "interfaces";
 
 const RegisterPage = () => {
-
-  
+  const initialState = {
+      name: '',
+      email: '',
+      password:''
+  }
+  const handleSubmit = (value: IStateForm) => {
+    console.log(value);
+  };
   return (
-    <div>RegisterPage</div>
-  )
+    <>
+      <RegisterForm initialState={initialState} onSubmit={handleSubmit} />
+    </>
+  );
 }
 export default RegisterPage
