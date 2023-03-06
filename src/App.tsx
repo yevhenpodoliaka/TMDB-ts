@@ -10,7 +10,7 @@ const NotFound =lazy(()=>import('./pages/NotFoundPage'))
 
 
 export const App = () => {
-  return (< >
+  return (<>
     <Routes>
       <Route path="/" element={<Layout />}>
           <Route index element={<MoviesPage />} />

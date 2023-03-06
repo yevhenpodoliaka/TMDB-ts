@@ -1,18 +1,18 @@
-import LoginForm from "components/Forms/LoginForm"
-import { IStateForm} from "interfaces";
+import LoginForm from 'components/Forms/LoginForm';
+import { IStateForm } from 'interfaces/formInterfaces';
 
 const LoginPage = () => {
-     const initialState = {
-       email: '',
-       password: '',
+  const initialState = {
+    email: '',
+    password: '',
   };
-    const handleSubmit = (value: IStateForm) => {
-      console.log(value);
-    };
+  const handleSubmit = (value: IStateForm) => {
+    console.log(value);
+  };
   return (
     <>
       <LoginForm initialState={initialState} onSubmit={handleSubmit} />
     </>
   );
-}
-export default LoginPage
+};
+export default LoginPage;

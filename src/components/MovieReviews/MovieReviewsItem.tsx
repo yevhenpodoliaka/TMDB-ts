@@ -1,4 +1,4 @@
-import { IReview } from 'interfaces';
+import { IReview } from 'interfaces/movieInterfaces';
 import styles from './MovieReviews.module.css';
 
 export default function MovieReviewsItem({ author, content }: IReview) {

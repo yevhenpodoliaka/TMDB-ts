@@ -1,6 +1,6 @@
 import useForm from 'hooks/useForm';
 import { Link } from 'react-router-dom';
-import { IFormProps } from 'interfaces';
+import { IFormProps } from 'interfaces/formInterfaces';
 import Button from 'components/Button/Button';
 import styles from './Forms.module.css';
 
@@ -9,16 +9,15 @@ const RegisterForm = ({ onSubmit, initialState }: IFormProps) => {
     initialState,
     onSubmit,
   });
-  const { name, email, password } = state
-  
+  const { name, email, password } = state;
+
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if ((name && email && password)) {
-         handleSubmit(e);
+    e.preventDefault();
+    if (name && email && password) {
+      handleSubmit(e);
     } else {
-      alert("Всі поля мають бути заповнені")
+      alert('Всі поля мають бути заповнені');
     }
- 
   };
 
   return (

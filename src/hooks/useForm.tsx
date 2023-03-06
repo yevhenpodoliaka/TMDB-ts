@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { IFormProps } from 'interfaces';
-
+import { IFormProps } from 'interfaces/formInterfaces';
 
 const useForm = ({ initialState, onSubmit }: IFormProps) => {
   const [state, setState] = useState({ ...initialState });

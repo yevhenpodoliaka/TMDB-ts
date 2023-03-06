@@ -3,7 +3,7 @@ import {
   IResponseById,
   ICast,
   IResponseReviews,
-} from '../interfaces';
+} from '../interfaces/movieInterfaces';
 
 const KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3/';

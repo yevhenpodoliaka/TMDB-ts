@@ -1,5 +1,5 @@
 import defaultPoster from 'images/no-poster.jpg';
-import { IActor } from 'interfaces';
+import { IActor } from 'interfaces/movieInterfaces';
 import styles from './Cast.module.css';
 
 const Actor = ({ character, name, profile_path }: IActor) => {

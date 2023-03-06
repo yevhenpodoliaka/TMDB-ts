@@ -1,6 +1,6 @@
 import styles from './MovieDetails.module.css';
 import defaultPoster from 'images/no-poster.jpg';
-import { IResponseById } from 'interfaces';
+import { IResponseById } from 'interfaces/movieInterfaces';
 import AboutMovie from '../AboutMovie/AboutMovie';
 import GoBackLink from 'components/GoBackLink/GoBackLink';
 import { useState } from 'react';

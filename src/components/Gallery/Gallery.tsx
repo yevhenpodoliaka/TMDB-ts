@@ -1,5 +1,5 @@
 import styles from './Gallery.module.css';
-import { IMovie } from 'interfaces';
+import { IMovie } from 'interfaces/movieInterfaces';
 import GalleryItem from '../GalleryItem/GalleryItem';
 
 type Props = {

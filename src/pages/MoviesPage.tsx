@@ -5,7 +5,7 @@ import {
   fetchQueryMovies,
   fetchDiscoverMovies,
 } from 'service/api-service';
-import { IMovie } from 'interfaces';
+import { IMovie } from 'interfaces/movieInterfaces';
 import Gallery from 'components/Gallery/Gallery';
 import PagesOptionButtons from 'components/PagesOptionButtons/PagesOptionButtons';
 import NotResultPoster from 'components/NotResultPoster/NotResultPoster';
@@ -45,7 +45,7 @@ const MoviesPage = () => {
         .catch(e => setError(e))
         .finally(() => setIsLoading(false));
     }
-    if (page&&!year&&!genre&&!query) {
+    if (page && !year && !genre && !query) {
       //  console.log("useEffect if trending")
       fetchTrendingMovies(Number(page))
         .then(({ results, total_pages, total_results }) => {
@@ -56,7 +56,7 @@ const MoviesPage = () => {
         .catch(e => setError(e))
         .finally(() => setIsLoading(false));
     }
-    if (query&&!year&&!genre) {
+    if (query && !year && !genre) {
       //  console.log("useEffect if query")
       fetchQueryMovies(query, Number(page))
         .then(({ results, total_pages, total_results }) => {

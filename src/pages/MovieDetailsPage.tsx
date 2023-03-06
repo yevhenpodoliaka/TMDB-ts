@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovieById } from 'service/api-service';
-import { IResponseById } from 'interfaces';
+import { IResponseById } from 'interfaces/movieInterfaces';
 import Spinner from 'components/Spinner/Spinner';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import ErrorPoster from 'components/ErrorPoster/ErrorPoster';

@@ -1,12 +1,12 @@
-import RegisterForm from "components/Forms/RegisterForm"
-import { IStateForm} from "interfaces";
+import RegisterForm from 'components/Forms/RegisterForm';
+import { IStateForm } from 'interfaces/formInterfaces';
 
 const RegisterPage = () => {
   const initialState = {
-      name: '',
-      email: '',
-      password:''
-  }
+    name: '',
+    email: '',
+    password: '',
+  };
   const handleSubmit = (value: IStateForm) => {
     console.log(value);
   };
@@ -15,5 +15,5 @@ const RegisterPage = () => {
       <RegisterForm initialState={initialState} onSubmit={handleSubmit} />
     </>
   );
-}
-export default RegisterPage
+};
+export default RegisterPage;

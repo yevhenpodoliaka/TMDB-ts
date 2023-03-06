@@ -1,4 +1,4 @@
-import { IAboutMovie } from 'interfaces';
+import { IAboutMovie } from 'interfaces/movieInterfaces';
 import styles from './AboutMovie.module.css';
 
 const AboutMovie = ({

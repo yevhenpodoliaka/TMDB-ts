@@ -3,7 +3,7 @@ import { fetchCast } from 'service/api-service';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Actor from './Actor';
-import { IActor } from 'interfaces';
+import { IActor } from 'interfaces/movieInterfaces';
 
 const Cast = () => {
   const [error, setError] = useState<Error>();

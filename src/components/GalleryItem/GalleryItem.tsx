@@ -3,7 +3,7 @@ import styles from './GalleryItem.module.css';
 import genresList from 'genresUa.json';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { IMovie } from 'interfaces';
+import { IMovie } from 'interfaces/movieInterfaces';
 
 const GalleryItem = ({
   id,
