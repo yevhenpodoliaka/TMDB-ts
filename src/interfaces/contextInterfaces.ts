@@ -1,8 +1,8 @@
 export interface IAuthUserContext {
   isLoggedIn: boolean;
-  username: string;
+  userName: string;
   logIn: (name: string, token: string) => void;
   logOut: () => void;
   userToken: string;
-
+  refreshUser: (name: string) => void;
 }

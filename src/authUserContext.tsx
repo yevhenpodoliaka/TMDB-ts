@@ -1,35 +1,41 @@
 import React, { createContext, useState } from 'react';
 import { IAuthUserContext } from 'interfaces/contextInterfaces';
 import useLocalStorage from 'hooks/useLocalStorage';
+
 const initialContext = {
-isLoggedIn: false,
-username: "",
+  isLoggedIn: false,
+  userName: '',
   logIn: (name: string, token: string) => {},
   logOut: () => {},
-  userToken: "",
-}
+  userToken: '',
+  refreshUser: (name: string) => {},
+};
+
 export const authUserContext = createContext<IAuthUserContext>(initialContext);
 
 const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [userToken, setUserToken] = useLocalStorage('token', '');
 
   const logIn = (name: string, token: string) => {
     setIsLoggedIn(true);
-    setUsername(name);
+    setUserName(name);
     setUserToken(token);
   };
 
   const logOut = () => {
     setIsLoggedIn(false);
-    setUsername('');
+    setUserName('');
     setUserToken('');
   };
-
+  const refreshUser = (name: string) => {
+    setIsLoggedIn(true);
+    setUserName(name);
+  };
   return (
     <authUserContext.Provider
-      value={{ isLoggedIn, username, logIn, logOut, userToken, }}
+      value={{ isLoggedIn, userName, logIn, logOut, userToken, refreshUser }}
     >
       {children}
     </authUserContext.Provider>

@@ -2,3 +2,13 @@
 display: flex;
 gap: 12px;
 }
+
+.userMenu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:8px;
+}
+.userName{
+    color: var(--secondary-color);
+}
