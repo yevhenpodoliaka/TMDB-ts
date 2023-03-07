@@ -23,7 +23,9 @@ const RegisterPage = () => {
   const handleSubmit = (value: IStateForm) => {
     const request = convertStateToRequest(value);
     registerUser(request)
-      .then(data => logIn(data?.name!, data?.token!))
+      .then(data => {
+        if (data) logIn(data.name, data.token);
+      })
       .catch(e => console.log(e));
   };
 
