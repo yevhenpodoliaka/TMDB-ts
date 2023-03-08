@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
 import { lazy } from 'react'
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useAuthUserContext } from 'hooks/useAuthUserContext';
-import { fetchCurrentUser } from 'service/auth-service';
 import Layout from "./components/Layout/Layout";
-import { IResponseCurrentUser } from 'interfaces/authInterfaces';
 const LoginPage = lazy(() => import("./pages/LoginPage"))
 const RegisterPage= lazy(()=>import("./pages/RegisterPage"))
 const MoviesPage = lazy(() => import("./pages/MoviesPage"));
@@ -14,17 +10,9 @@ const NotFound = lazy(() => import('./pages/NotFoundPage'))
 
 
 export const App = () => {
+  
+const isLoggedIn= false
 
-  const { isLoggedIn, userToken, refreshUser } = useAuthUserContext()
-  
-  useEffect(() => {
-    if (userToken !== '') {
-      fetchCurrentUser(userToken)
-        .then(data =>{if(data)refreshUser(data.name)})
-        .catch(console.log);
-    }
-  }, [refreshUser, userToken]);
-  
   return (
     <>
       <Routes>

@@ -32,16 +32,14 @@ export const registerUser = async ({
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      if (error.response?.status === 409) {
-        throw new Error('користувач з такою поштою вже зареєстрований');
-      }
-
+      console.log('AxiosError', error.response?.data);
       throw new Error(error.response?.data.message);
     } else if (error instanceof Error) {
-      console.log(error);
+      console.log("Error",error);
       throw new Error(error.message);
     }
   }
+ 
 };
 
 export const loginUser = async ({ email, password }: IRequestToLogin) => {
@@ -66,3 +64,5 @@ export const fetchCurrentUser = async (savedToken: string) => {
     console.log(error);
   }
 };
+
+

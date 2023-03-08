@@ -1,12 +1,6 @@
 import useStateForm from 'hooks/useStateForm';
-import { useAuthUserContext } from 'hooks/useAuthUserContext';
-import { registerUser } from 'service/auth-service';
-import { IRequestToRegister } from 'interfaces/authInterfaces';
-import { IStateForm } from 'interfaces/formInterfaces';
-
 import Button from 'components/Button/Button';
 import styles from './Forms.module.css';
-
 
 const RegisterForm = () => {
   const initialState = {
@@ -14,42 +8,18 @@ const RegisterForm = () => {
     email: '',
     password: '',
   };
-  const { logIn} = useAuthUserContext();
+
   const { state, handleChange } = useStateForm({
     initialState,
   });
 
-  function convertStateToRequest(state: IStateForm): IRequestToRegister {
-    const request: IRequestToRegister = {
-      name: state.name as string,
-      email: state.email as string,
-      password: state.password as string,
-    };
-    return request;
-  }
-  const request = convertStateToRequest(state);
-
-  const { name, email, password } = request;
+  const { name, email, password } = state;
 
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (password.length < 6) {
-      alert('Пароль має бути не менше 6 символів!!!');
-      return
-    }
+
     if (name && email && password) {
-      registerUser(request)
-        .then(data => {
-          if (data) logIn(data?.name, data?.token);
-        })
-        .catch((e:Error) => {
-          console.log("error",e)
-          console.log('message', e.message);
-          if (e.message) {
-             alert(e.message);
-          }
-         
-        });
+      console.log(name, email, password);
     } else {
       alert('Всі поля мають бути заповнені');
     }
