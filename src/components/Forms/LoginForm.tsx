@@ -32,6 +32,7 @@ const LoginForm = () => {
     if (email && password) {
       loginUser(request)
         .then(data => {
+          console.log("LOGIN FORM",data)
           if (data) logIn(data.name, data.token);
         })
         .catch(e => console.log(e));

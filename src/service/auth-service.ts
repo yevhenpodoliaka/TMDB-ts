@@ -1,8 +1,9 @@
-import axios,{AxiosResponse} from 'axios';
+import axios from 'axios';
 import {
   IRequestToRegister,
   IRequestToLogin,
   IAuthResponse,
+  IResponseCurrentUser,
 } from 'interfaces/authInterfaces';
 
 axios.defaults.baseURL = 'https://tmdb-backend.onrender.com/api';
@@ -15,6 +16,8 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
+
+
 
 export const registerUser = async ({
   name,
@@ -31,13 +34,11 @@ export const registerUser = async ({
     return data;
   } catch (error) {
     console.log(error);
+
   }
 };
 
-export const loginUser = async ({
-  email,
-  password,
-}: IRequestToLogin) => {
+export const loginUser = async ({ email, password }: IRequestToLogin) => {
   try {
     const { data } = await axios.post<IAuthResponse>('auth/login', {
       email,
@@ -51,12 +52,11 @@ export const loginUser = async ({
 };
 
 export const fetchCurrentUser = async (savedToken: string) => {
-   token.set(savedToken);
+  token.set(savedToken);
   try {
-    const { data } = await axios.get('auth/current');
+    const { data } = await axios.get<IResponseCurrentUser>('auth/current');
     return data;
   } catch (error) {
     console.log(error);
   }
 };
-

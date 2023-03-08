@@ -7,6 +7,7 @@ import { IStateForm } from 'interfaces/formInterfaces';
 import Button from 'components/Button/Button';
 import styles from './Forms.module.css';
 
+
 const RegisterForm = () => {
   const initialState = {
     name: '',
@@ -27,15 +28,15 @@ const RegisterForm = () => {
     return request;
   }
   const request = convertStateToRequest(state);
+  
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name && email && password) {
       registerUser(request)
         .then(data => {
-          console.log(data)
           if (data) logIn(data?.name, data?.token);
         })
-        .catch(console.log);
+        .catch((e)=>console.log(e.message));
     } else {
       alert('Всі поля мають бути заповнені');
     }

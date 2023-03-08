@@ -7,7 +7,9 @@ const RegisterPage = () => {
     <>
       <RegisterForm />
       <Link to="/login">
-        Якщо Ви вже зареєстровані перейдіть до сторінки входу
+        <p style={{ textAlign: 'center' , padding:"0 15px"}}>
+          Якщо Ви вже зареєстровані перейдіть до сторінки входу
+        </p>
       </Link>
     </>
   );
