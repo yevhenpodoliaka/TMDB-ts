@@ -4,5 +4,4 @@ export interface IStateForm {
 
 export interface IFormProps {
   initialState: IStateForm;
-  onSubmit: (state: IStateForm) => void;
 }

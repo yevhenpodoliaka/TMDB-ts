@@ -1,20 +1,41 @@
-import useForm from 'hooks/useForm';
-import { Link } from 'react-router-dom';
-import { IFormProps } from 'interfaces/formInterfaces';
+import useStateForm from 'hooks/useStateForm';
+import { useAuthUserContext } from 'hooks/useAuthUserContext';
+import { registerUser } from 'service/auth-service';
+import { IRequestToRegister } from 'interfaces/authInterfaces';
+import { IStateForm } from 'interfaces/formInterfaces';
+
 import Button from 'components/Button/Button';
 import styles from './Forms.module.css';
 
-const RegisterForm = ({ onSubmit, initialState }: IFormProps) => {
-  const { state, handleChange, handleSubmit } = useForm({
+const RegisterForm = () => {
+  const initialState = {
+    name: '',
+    email: '',
+    password: '',
+  };
+  const { logIn } = useAuthUserContext();
+  const { state, handleChange } = useStateForm({
     initialState,
-    onSubmit,
   });
   const { name, email, password } = state;
-
+  function convertStateToRequest(state: IStateForm): IRequestToRegister {
+    const request: IRequestToRegister = {
+      name: state.name as string,
+      email: state.email as string,
+      password: state.password as string,
+    };
+    return request;
+  }
+  const request = convertStateToRequest(state);
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (name && email && password) {
-      handleSubmit(e);
+      registerUser(request)
+        .then(data => {
+          console.log(data)
+          if (data) logIn(data?.name, data?.token);
+        })
+        .catch(console.log);
     } else {
       alert('Всі поля мають бути заповнені');
     }
@@ -58,9 +79,6 @@ const RegisterForm = ({ onSubmit, initialState }: IFormProps) => {
       <Button aria-label="register button" type="submit">
         зареєструватися
       </Button>
-      <Link to="/login">
-        Якщо Ви вже зареєстровані перейдіть до сторінки входу
-      </Link>
     </form>
   );
 };

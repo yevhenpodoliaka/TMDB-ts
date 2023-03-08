@@ -4,7 +4,8 @@ import { useAuthUserContext } from 'hooks/useAuthUserContext';
 import { FiLogIn } from 'react-icons/fi';
 
 const UserMenu = () => {
-    const { logOut ,userName} = useAuthUserContext();
+  const { logOut, userName } = useAuthUserContext();
+  console.log(userName);
     return (
       <div className={styles.userMenu}>
         <p className={styles.userName}>{userName}</p>
