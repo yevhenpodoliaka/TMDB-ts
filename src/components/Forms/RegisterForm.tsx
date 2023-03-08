@@ -14,11 +14,11 @@ const RegisterForm = () => {
     email: '',
     password: '',
   };
-  const { logIn } = useAuthUserContext();
+  const { logIn} = useAuthUserContext();
   const { state, handleChange } = useStateForm({
     initialState,
   });
-  const { name, email, password } = state;
+
   function convertStateToRequest(state: IStateForm): IRequestToRegister {
     const request: IRequestToRegister = {
       name: state.name as string,
@@ -28,15 +28,28 @@ const RegisterForm = () => {
     return request;
   }
   const request = convertStateToRequest(state);
-  
+
+  const { name, email, password } = request;
+
   const handleSubmitForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (password.length < 6) {
+      alert('Пароль має бути не менше 6 символів!!!');
+      return
+    }
     if (name && email && password) {
       registerUser(request)
         .then(data => {
           if (data) logIn(data?.name, data?.token);
         })
-        .catch((e)=>console.log(e.message));
+        .catch((e:Error) => {
+          console.log("error",e)
+          console.log('message', e.message);
+          if (e.message) {
+             alert(e.message);
+          }
+         
+        });
     } else {
       alert('Всі поля мають бути заповнені');
     }

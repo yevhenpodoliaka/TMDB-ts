@@ -17,8 +17,6 @@ const token = {
   },
 };
 
-
-
 export const registerUser = async ({
   name,
   email,
@@ -33,8 +31,16 @@ export const registerUser = async ({
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 409) {
+        throw new Error('користувач з такою поштою вже зареєстрований');
+      }
 
+      throw new Error(error.response?.data.message);
+    } else if (error instanceof Error) {
+      console.log(error);
+      throw new Error(error.message);
+    }
   }
 };
 
