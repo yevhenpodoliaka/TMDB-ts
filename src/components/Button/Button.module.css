@@ -16,7 +16,7 @@
 }
 
 .button:hover,
-button:focus {
+button:focus-visible {
   background-color: var(--primary-color);
   color: var(--tertiary-color);
   transform: scale(1.02);

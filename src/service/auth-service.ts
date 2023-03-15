@@ -32,14 +32,16 @@ export const registerUser = async ({
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.log('AxiosError', error.response?.data);
-      throw new Error(error.response?.data.message);
-    } else if (error instanceof Error) {
-      console.log("Error",error);
-      throw new Error(error.message);
+      if (error.response?.status === 409) {
+         throw new Error("status 409");
+      }
+      if (error.response?.data.message) {
+        throw new Error(error.response?.data.message);
+      }
+    } else {
+      throw new Error('server Error');
     }
   }
- 
 };
 
 export const loginUser = async ({ email, password }: IRequestToLogin) => {
@@ -51,7 +53,17 @@ export const loginUser = async ({ email, password }: IRequestToLogin) => {
     token.set(data.token);
     return data;
   } catch (error) {
-    console.log(error);
+    if (axios.isAxiosError(error)) {
+      if (error.response?.status === 401) {
+        throw new Error(error.response?.data.message);
+      }
+      if (error.response?.data.message) {
+        console.log('error.response', error.response);
+        throw new Error(error.response?.data.message);
+      }
+    } else {
+      throw new Error('server Error');
+    }
   }
 };
 
@@ -64,5 +76,3 @@ export const fetchCurrentUser = async (savedToken: string) => {
     console.log(error);
   }
 };
-
-
