@@ -1,12 +1,13 @@
 import Button from 'components/Button/Button';
 import styles from './Forms.module.css';
 import { registerUser } from 'service/auth-service';
+import useUserContext from 'hooks/useUserContext';
 import { IRequestToRegister } from 'interfaces/authInterfaces';
 
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 
 const RegisterForm = () => {
-  
+    const { logInUser } = useUserContext();
   const validateName = (value: string) => {
     if (!value) {
       return " Ім'я обов'язкове для реєстрації";
@@ -42,7 +43,10 @@ const RegisterForm = () => {
         { setSubmitting, resetForm }: FormikHelpers<IRequestToRegister>
       
       ) => {
-        registerUser(values).then(() => {
+        registerUser(values).then((data) => {
+             if (data) {
+               logInUser({ name: data.name }, data.token);
+             }
           resetForm();
         }).catch((e:Error) => {
           if (e.message === "status 409") {

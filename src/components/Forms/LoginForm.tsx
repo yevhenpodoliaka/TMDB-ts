@@ -1,11 +1,12 @@
 import Button from 'components/Button/Button';
 import styles from './Forms.module.css';
 import { loginUser } from 'service/auth-service';
+import useUserContext from 'hooks/useUserContext';
 import { IRequestToLogin } from 'interfaces/authInterfaces';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 
 const LoginForm = () => {
-
+  const { logInUser} = useUserContext();
   const validateEmail = (value: string) => {
     if (!value) {
       return " Пошта обов'язкова для входу";
@@ -14,11 +15,11 @@ const LoginForm = () => {
     }
   };
   const validatePassword = (value: string) => {
-          if (!value) {
-        return " Пароль обов'язковий для входу";
-        } else if (value.length < 6) {
-          return 'Довжина паролю має мути не коротше шести символів';
-        }
+    if (!value) {
+      return " Пароль обов'язковий для входу";
+    } else if (value.length < 6) {
+      return 'Довжина паролю має мути не коротше шести символів';
+    }
   };
   return (
     <Formik
@@ -26,27 +27,27 @@ const LoginForm = () => {
         email: '',
         password: '',
       }}
-
       onSubmit={(
         values: IRequestToLogin,
         { setSubmitting, resetForm }: FormikHelpers<IRequestToLogin>
-      
       ) => {
-        loginUser(values).then((data) => {
-          console.log(data)
-          resetForm();
-        }).catch((e) => {
-          if (e === 'Email not found' || 'Password wrong') {
-            alert(`Перевірте Правильність вводу пошти або паролю`);
-          }
-           setSubmitting(false);
-        });
+        loginUser(values)
+          .then(data => {
+            if (data) {
+              logInUser({ name: data.name }, data.token);
+            }
+            resetForm();
+          })
+          .catch(e => {
+            if (e === 'Email not found' || 'Password wrong') {
+              alert(`Перевірте Правильність вводу пошти або паролю`);
+            }
+            setSubmitting(false);
+          });
       }}
     >
       {({ errors, touched }) => (
         <Form className={styles.form}>
-       
-
           <label>
             <span className={styles.inputName}>Пошта</span>
             <Field
@@ -67,7 +68,7 @@ const LoginForm = () => {
               id="password"
               name="password"
               type="password"
-             validate= {validatePassword}
+              validate={validatePassword}
             />
             {touched.password && errors.password && (
               <span className={styles.inputError}>{errors.password}</span>
@@ -83,4 +84,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-

@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom';
 import styles from './AuthNav.module.css';
 import { FiLogIn } from 'react-icons/fi';
 import UserMenu from './UserMenu';
+import useUserContext from 'hooks/useUserContext';
 
 
 const AuthNav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isLoggedIn  =false
-
+  
+const { isLoggedIn }=useUserContext()
   return (
     <>
       {isLoggedIn ? (

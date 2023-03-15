@@ -15,6 +15,5 @@ export interface IAuthResponse {
 }
 
 export interface IResponseCurrentUser {
-  name: string,
-  email:string
+ user:{name:string,email:string}
 }
