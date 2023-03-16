@@ -19,9 +19,7 @@ export const App = () => {
 
     if (token) {
           fetchCurrentUser(token)
-      .then(data => {
-        console.log(data,"app");
-  
+      .then((data) => {
         if (data) {
         logInUser({ name: data.user.name }, token);
       }})

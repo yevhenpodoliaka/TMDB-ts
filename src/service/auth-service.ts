@@ -73,6 +73,16 @@ export const fetchCurrentUser = async (savedToken: string) => {
     const { data } = await axios.get<IResponseCurrentUser>('auth/current');
     return data;
   } catch (error) {
-    console.log(error);
+   if (axios.isAxiosError(error)) {
+     if (error.response?.status === 401) {
+       throw new Error(error.response?.data.message);
+     }
+     if (error.response?.data.message) {
+       console.log('error.response', error.response);
+       throw new Error(error.response?.data.message);
+     }
+   } else {
+     throw new Error('server Error');
+   }
   }
 };

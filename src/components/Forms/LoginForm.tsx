@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import Button from 'components/Button/Button';
+import Spinner from 'components/Spinner/Spinner';
 import styles from './Forms.module.css';
 import { loginUser } from 'service/auth-service';
 import useUserContext from 'hooks/useUserContext';
@@ -6,7 +8,10 @@ import { IRequestToLogin } from 'interfaces/authInterfaces';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 
 const LoginForm = () => {
-  const { logInUser} = useUserContext();
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { logInUser } = useUserContext();
+  
   const validateEmail = (value: string) => {
     if (!value) {
       return " Пошта обов'язкова для входу";
@@ -21,32 +26,38 @@ const LoginForm = () => {
       return 'Довжина паролю має мути не коротше шести символів';
     }
   };
+
+  const handleSubmit = (
+      values: IRequestToLogin,
+      { setSubmitting, resetForm}: FormikHelpers<IRequestToLogin>
+    ) => {
+setIsLoading(true)
+      loginUser(values)
+        .then(data => {
+          if (data) {
+            logInUser({ name: data.name }, data.token);
+          }
+          resetForm();
+        })
+        .catch(e => {
+          if (e === 'Email not found' || 'Password wrong') {
+            alert(`Перевірте Правильність вводу пошти або паролю`);
+          }
+          setSubmitting(false);
+        })
+        .finally(() => setIsLoading(false));
+    };
+
   return (
-    <Formik
+   <Formik
       initialValues={{
         email: '',
         password: '',
       }}
-      onSubmit={(
-        values: IRequestToLogin,
-        { setSubmitting, resetForm }: FormikHelpers<IRequestToLogin>
-      ) => {
-        loginUser(values)
-          .then(data => {
-            if (data) {
-              logInUser({ name: data.name }, data.token);
-            }
-            resetForm();
-          })
-          .catch(e => {
-            if (e === 'Email not found' || 'Password wrong') {
-              alert(`Перевірте Правильність вводу пошти або паролю`);
-            }
-            setSubmitting(false);
-          });
-      }}
+      onSubmit={handleSubmit}
+
     >
-      {({ errors, touched }) => (
+      {isLoading ? <Spinner /> : ({ errors, touched }) => (
         <Form className={styles.form}>
           <label>
             <span className={styles.inputName}>Пошта</span>
@@ -80,7 +91,10 @@ const LoginForm = () => {
         </Form>
       )}
     </Formik>
+   
   );
 };
 
 export default LoginForm;
+
+

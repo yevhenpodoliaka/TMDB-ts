@@ -5,7 +5,7 @@ import useUserContext from "hooks/useUserContext";
 
 const UserMenu = () => {
   const { userData ,logOutUser} = useUserContext()
-  console.log(userData,"userMenu COMPONENT")
+
   const userName = userData.name
   
     return (

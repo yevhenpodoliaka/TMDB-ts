@@ -1,4 +1,6 @@
+import {useState} from "react"
 import Button from 'components/Button/Button';
+import Spinner from 'components/Spinner/Spinner';
 import styles from './Forms.module.css';
 import { registerUser } from 'service/auth-service';
 import useUserContext from 'hooks/useUserContext';
@@ -7,6 +9,8 @@ import { IRequestToRegister } from 'interfaces/authInterfaces';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 
 const RegisterForm = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
     const { logInUser } = useUserContext();
   const validateName = (value: string) => {
     if (!value) {
@@ -30,19 +34,12 @@ const RegisterForm = () => {
           return 'Довжина паролю має мути не коротше шести символів';
         }
   };
-  return (
-    <Formik
-      initialValues={{
-        name: '',
-        email: '',
-        password: '',
-      }}
-
-      onSubmit={(
+  const handleSubmit = (
         values: IRequestToRegister,
         { setSubmitting, resetForm }: FormikHelpers<IRequestToRegister>
       
       ) => {
+        setIsLoading(true)
         registerUser(values).then((data) => {
              if (data) {
                logInUser({ name: data.name }, data.token);
@@ -54,10 +51,19 @@ const RegisterForm = () => {
           }
           
            setSubmitting(false);
-        });
+        }).finally(()=>setIsLoading(false))
+      }
+  return (
+    <Formik
+      initialValues={{
+        name: '',
+        email: '',
+        password: '',
       }}
+
+      onSubmit={handleSubmit}
     >
-      {({ errors, touched }) => (
+ { isLoading ? <Spinner /> :     ({ errors, touched }) => (
         <Form className={styles.form}>
           <label>
             <span className={styles.inputName}>Ім'я</span>
@@ -108,27 +114,3 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
-
-
-
-      // validate={values => {
-      //   const errors: FormikErrors<IRequestToRegister> = {};
-      // if (!values.name) {
-      //   errors.name = " Ім'я обов'язкове для реєстрації";
-      // } else if (values.name.length < 3) {
-      //   errors.name = "Ім'я має бути не коротше трьох символів ";
-      // }
-      // if (!values.email) {
-      //   errors.email = " Пошта обов'язкова для реєстрації";
-      // } else if (
-      //   !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-      // ) {
-      //   errors.email = 'Не правильний формат пошти';
-      // }
-      // if (!values.password) {
-      //   errors.password = " Пароль обов'язковий для реєстрації";
-      // } else if (values.password.length < 6) {
-      //   errors.password = 'Довжина паролю має мути не коротше шести символів';
-      // }
-      // return errors;
-      // }}
