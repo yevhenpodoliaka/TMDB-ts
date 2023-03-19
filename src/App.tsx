@@ -21,7 +21,7 @@ export const App = () => {
           fetchCurrentUser(token)
       .then((data) => {
         if (data) {
-        logInUser({ name: data.user.name }, token);
+        logInUser( data.user.name,data.user.movies, token);
       }})
       .catch(e=>console.log(e))
     }

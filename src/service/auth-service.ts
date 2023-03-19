@@ -58,7 +58,6 @@ export const loginUser = async ({ email, password }: IRequestToLogin) => {
         throw new Error(error.response?.data.message);
       }
       if (error.response?.data.message) {
-        console.log('error.response', error.response);
         throw new Error(error.response?.data.message);
       }
     } else {
@@ -66,6 +65,21 @@ export const loginUser = async ({ email, password }: IRequestToLogin) => {
     }
   }
 };
+export const logOut = async () => {
+  try {
+    await axios.get('auth/logout');
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.data.message) {
+        console.log('error.response', error.response);
+        throw new Error(error.response?.data.message);
+      }
+    } else {
+      throw new Error('server Error');
+    }
+  }
+}
+
 
 export const fetchCurrentUser = async (savedToken: string) => {
   token.set(savedToken);

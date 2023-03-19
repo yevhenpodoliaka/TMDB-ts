@@ -42,7 +42,7 @@ const RegisterForm = () => {
         setIsLoading(true)
         registerUser(values).then((data) => {
              if (data) {
-               logInUser({ name: data.name }, data.token);
+               logInUser(  data.name ,data.movies, data.token);
              }
           resetForm();
         }).catch((e:Error) => {

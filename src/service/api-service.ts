@@ -75,7 +75,4 @@ export async function fetchReviews(movieId: string) {
   return data;
 }
 
-// https://api.themoviedb.org/3/discover/movie?
-// api_key=b6201d5209ec246f483ea16253167a90
-// &language=uk-UA&page=1
-// &with_genres&primary_release_year=1995
+
