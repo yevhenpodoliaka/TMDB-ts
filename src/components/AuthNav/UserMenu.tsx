@@ -5,9 +5,9 @@ import { logOut } from "service/auth-service";
 import useUserContext from "hooks/useUserContext";
 
 const UserMenu = () => {
-  const { userData, logOutUser } = useUserContext();
+  const { userName, logOutUser } = useUserContext();
   //TODO handleClick=>error
-  const userName = userData.name;
+
   const handleClick = () => {
     logOut()
       .then(() => logOutUser())

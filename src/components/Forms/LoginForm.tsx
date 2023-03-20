@@ -35,7 +35,7 @@ setIsLoading(true)
       loginUser(values)
         .then(data => {
           if (data) {
-            logInUser(data.name, data.movies, data.token);
+            logInUser(data.name,data.token);
           }
           resetForm();
         })

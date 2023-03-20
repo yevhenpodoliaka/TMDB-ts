@@ -6,7 +6,7 @@ import {
   IResponseCurrentUser,
 } from 'interfaces/authInterfaces';
 
-axios.defaults.baseURL = 'https://tmdb-backend.onrender.com/api';
+axios.defaults.baseURL = 'https://tmdb-backend-production.up.railway.app/api';
 
 const token = {
   set(token: string) {

@@ -80,3 +80,11 @@ export interface IReview{
             created_at?:Date,
 }
 
+
+export interface ISavedMovie {
+  movieId: string;
+  group: 'favorites' | 'watched' | 'queued';
+  _id: string;
+}
+
+

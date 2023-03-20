@@ -1,18 +1,17 @@
 import { createContext, useState ,useCallback} from 'react';
 import useLocalStorage from 'hooks/useLocalStorage';
-import { IUserContext, ISavedMovie } from 'interfaces/authContextInterfaces';
+import { IUserContext } from 'interfaces/authContextInterfaces';
 
 
 const initUserContext: IUserContext = {
   isLoggedIn: false,
-  userData: { name: '' ,movies:[]},
+  userName: '',
   token: '',
   logInUser: () => {},
   logOutUser: () => {},
 };
-const initUserDataState: { name: string; movies: ISavedMovie[] } = {
+const initUserDataState: { name: string } = {
   name: '',
-  movies: [],
 };
 
 export const UserContext = createContext(initUserContext);
@@ -24,12 +23,12 @@ const UserContextProvider = ({
 }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [token, setToken] = useLocalStorage('token','');
-    const [userData, setUserData] = useState(initUserDataState);
+    const [userName, setUserName] = useState("");
 
   const logInUser = useCallback(
-    (name: string, movies: ISavedMovie[], token: string) => {
+    (name: string, token: string) => {
       setIsLoggedIn(true);
-      setUserData({ name, movies});
+      setUserName(name);
       setToken(token);
     },
     [setToken]
@@ -37,12 +36,12 @@ const UserContextProvider = ({
   const logOutUser = () => {
       setIsLoggedIn(false);
       setToken("")
-    setUserData(initUserDataState);
+    setUserName("");
   };
 
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, userData, logInUser, logOutUser,token }}
+      value={{ isLoggedIn, userName, logInUser, logOutUser,token }}
     >
       {children}
     </UserContext.Provider>
