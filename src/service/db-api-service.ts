@@ -49,7 +49,7 @@ export const removeMovie = async (_id: string) => {
 
 export const getAllMovies=async()=>{
     try {
-      const { data } = await axios.get('/');
+      const { data } = await axios.get('movies/');
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {

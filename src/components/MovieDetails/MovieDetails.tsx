@@ -7,7 +7,7 @@ import { useState } from 'react';
 import YoutubePlayer from '../YoutubePlayer/YoutubePlayer';
 import Cast from 'components/Cast/Cast';
 import MovieDetailsOptions from 'components/MovieDetailsOptions/MovieDetailsOptions';
-// import GroupButton from 'components/GroupButton/GroupButton';
+
 interface IProps {
   data: IResponseById;
 }
@@ -52,7 +52,7 @@ const MovieDetails = ({ data }: IProps) => {
     <>
       <GoBackLink />
       <MovieDetailsOptions options={options} onChange={setCurrentInfo} />
-      {/* <div> <GroupButton movieId={id.toString()} groupName='favorites' btnText='Улюблене'/></div> */}
+
       <div
         className={styles.card}
         style={{
