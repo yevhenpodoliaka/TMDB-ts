@@ -34,19 +34,19 @@ export const App = () => {
           <Route index element={<MoviesPage />} />
           <Route path="movie/:movieId" element={<MovieDetailsPage />} />
           <Route
-            path="library"
+            path="/library"
             element={
               isLoggedIn ? <LibraryPage /> : <Navigate to="/login" replace={true} />
             }
           />
           <Route
-            path="login"
+            path="/login"
             element={
               isLoggedIn ? <Navigate to="/" replace={true} /> : <LoginPage />
             }
           />
           <Route
-            path="register"
+            path="/register"
             element={
               isLoggedIn ? <Navigate to="/" replace={true} /> : <RegisterPage />
             }
