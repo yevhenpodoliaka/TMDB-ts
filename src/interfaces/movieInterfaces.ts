@@ -1,12 +1,14 @@
 export interface IMovie {
-    id: number,
-    title: string,
-    release_date:string,
-    poster_path: string,
-    genre_ids: number[],
-    vote_average:number,
-    
+  id: number;
+  title: string;
+  release_date: string;
+  poster_path: string;
+  genre_ids?: number[]; //- props для сторiнки MoviesPage
+  genres?: { id: number; name: string }[]; // - для сторiнки LibraryPage
+  vote_average: number;
 }
+
+
 export interface IResponse {
     page: number,
     results: IMovie[],

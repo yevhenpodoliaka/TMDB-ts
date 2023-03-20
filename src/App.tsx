@@ -33,7 +33,12 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<MoviesPage />} />
           <Route path="movie/:movieId" element={<MovieDetailsPage />} />
-          <Route path="library" element={<LibraryPage />} />
+          <Route
+            path="library"
+            element={
+              isLoggedIn ? <LibraryPage /> : <Navigate to="/login" replace={true} />
+            }
+          />
           <Route
             path="login"
             element={

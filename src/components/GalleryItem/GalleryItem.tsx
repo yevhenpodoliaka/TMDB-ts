@@ -5,12 +5,16 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { IMovie } from 'interfaces/movieInterfaces';
 
+//genre_ids- props для сторiнки MoviesPage
+// genres- props- для сторiнки LibraryPage
+
 const GalleryItem = ({
   id,
   title,
   poster_path,
   vote_average,
   genre_ids,
+  genres,
   release_date,
 }: IMovie) => {
   const location = useLocation();
@@ -18,11 +22,16 @@ const GalleryItem = ({
   const imageUrl = poster_path
     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
     : `${defaultPoster}`;
+  
 
-  const movieGenres = genresList.genres
-    .filter(i => genre_ids.includes(i.id))
-    .map(({ name }) => name)
-    .join(', ');
+      const movieGenres = genre_ids
+        ? genresList.genres
+            .filter(i => genre_ids.includes(i.id))
+            .map(({ name }) => name)
+            .join(', ')
+        : genres?.map(i => i.name).join(' , ');
+
+
 
   const year = release_date.slice(0, 4);
   return (

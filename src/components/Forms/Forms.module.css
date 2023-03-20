@@ -33,6 +33,9 @@
   border-radius: 8px;
 }
 
+.form input:-webkit-autofill{
+ border-radius: 8px;
+}
 .inputName {
   color: var(--primary-color);
   margin-bottom: 4px;

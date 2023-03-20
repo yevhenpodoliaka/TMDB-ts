@@ -10,7 +10,7 @@ const Gallery = ({ movies = [] }: Props) => {
   return (
     <ul className={styles.gallery}>
       {movies.map(
-        ({ id, title, poster_path, vote_average, genre_ids, release_date }) => (
+        ({ id, title, poster_path, vote_average, genre_ids,genres,release_date }) => (
           <GalleryItem
             key={id}
             id={id}
@@ -18,6 +18,7 @@ const Gallery = ({ movies = [] }: Props) => {
             poster_path={poster_path}
             vote_average={vote_average}
             genre_ids={genre_ids}
+            genres={genres}
             release_date={release_date}
           />
         )

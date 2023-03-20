@@ -41,10 +41,11 @@ const RegisterForm = () => {
       ) => {
         setIsLoading(true)
         registerUser(values).then((data) => {
-             if (data) {
-               logInUser(  data.name , data.token);
+             if (data && data.name && data.token) {
+               logInUser(data.name, data.token);
+                    resetForm();
              }
-          resetForm();
+     
         }).catch((e:Error) => {
           if (e.message === "status 409") {
             alert(`Користувач з поштою ${values.email} вже зареєстрований`);

@@ -34,10 +34,11 @@ const LoginForm = () => {
 setIsLoading(true)
       loginUser(values)
         .then(data => {
-          if (data) {
-            logInUser(data.name,data.token);
+          if ((data && data.name && data.token)) {
+            logInUser(data.name, data.token);
+               resetForm();
           }
-          resetForm();
+       
         })
         .catch(e => {
           if (e === 'Email not found' || 'Password wrong') {
@@ -67,6 +68,7 @@ setIsLoading(true)
               type="email"
               placeholder="post@mail.com"
               validate={validateEmail}
+              auto
             />
             {touched.email && errors.email && (
               <span className={styles.inputError}>{errors.email}</span>

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ISavedMovie } from 'interfaces/movieInterfaces';
 
 export const addMovie = async (movieId:string,group:string) => {
     try {
@@ -47,10 +48,14 @@ export const removeMovie = async (_id: string) => {
   }
 };
 
+interface IResponseSavedMovie{
+  movies:ISavedMovie[]
+}
 export const getAllMovies=async()=>{
     try {
-      const { data } = await axios.get('movies/');
+      const { data } = await axios.get<IResponseSavedMovie>('movies/');
       return data;
+
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response?.data.message) {
