@@ -1,6 +1,6 @@
 import styles from './Header.module.css';
 import SearchBar from '../SearchBar/SearchBar';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import logoImg from 'images/logo.svg';
 import SearchOptions from 'components/SearchOptions/SearchOptions';
 import AuthNav from 'components/AuthNav/AuthNav';
@@ -8,6 +8,8 @@ import SiteNav from '../SiteNav/SiteNav';
 
 const Header = () => {
   const { movieId } = useParams();
+   const location = useLocation();
+
 
   return (
     <header className={styles.header}>
@@ -21,8 +23,8 @@ const Header = () => {
         </nav>
       </div>
 
-      {!movieId && <SearchBar />}
-      {!movieId && <SearchOptions />}
+      {(!movieId && location.pathname !== '/library' )&& <SearchBar />}
+      {(!movieId && location.pathname !== '/library') && <SearchOptions />}
     </header>
   );
 };
