@@ -9,7 +9,7 @@ import SiteNav from '../SiteNav/SiteNav';
 const Header = () => {
   const { movieId } = useParams();
    const location = useLocation();
-
+   console.log(location.pathname);
 
   return (
     <header className={styles.header}>
@@ -22,9 +22,9 @@ const Header = () => {
           <AuthNav />
         </nav>
       </div>
-
-      {(!movieId && location.pathname !== '/library' )&& <SearchBar />}
-      {(!movieId && location.pathname !== '/library') && <SearchOptions />}
+   
+      {!movieId && location.pathname === '/' && <SearchBar />}
+      {!movieId && location.pathname === '/' && <SearchOptions />}
     </header>
   );
 };

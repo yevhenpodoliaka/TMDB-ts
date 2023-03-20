@@ -68,7 +68,6 @@ setIsLoading(true)
               type="email"
               placeholder="post@mail.com"
               validate={validateEmail}
-              auto
             />
             {touched.email && errors.email && (
               <span className={styles.inputError}>{errors.email}</span>
