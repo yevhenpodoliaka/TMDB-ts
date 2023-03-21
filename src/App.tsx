@@ -2,6 +2,7 @@ import { lazy ,useEffect} from 'react'
 import { Routes, Route, Navigate } from "react-router-dom";
 import useUserContext from 'hooks/useUserContext';
 import { fetchCurrentUser } from 'service/auth-service';
+import { getAllMovies } from 'service/db-api-service';
 import Layout from "./components/Layout/Layout";
 const LoginPage = lazy(() => import("./pages/LoginPage"))
 const RegisterPage= lazy(()=>import("./pages/RegisterPage"))
@@ -12,7 +13,6 @@ const NotFound = lazy(() => import('./pages/NotFoundPage'))
 
 
 export const App = () => {
-  
   const { isLoggedIn, token,logInUser } = useUserContext()
 
   useEffect(() => {
@@ -26,7 +26,21 @@ export const App = () => {
       .catch(e=>console.log(e))
     }
 
-},[logInUser, token])
+  }, [logInUser, token])
+
+//зберігання колекції користувача до LocalStorage
+  useEffect(() => {
+    if (isLoggedIn) {
+      console.log("useeffect savedMovies APP")
+      getAllMovies()
+        .then(data => localStorage.setItem('savedMovies', JSON.stringify(data?.movies)))
+        .catch(e => console.log(e));
+    }
+    if (token === "") {
+     localStorage.setItem('savedMovies', "")
+    }
+  }, [isLoggedIn,token])
+
   return (
     <>
       <Routes>
