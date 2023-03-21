@@ -19,11 +19,9 @@ const LibraryPage = () => {
  },[])
 
   useEffect(() => {
-    
-  console.log(savedMovies, 'SM Library UEFF');
     if (savedMovies.length > 0) {
       setIsLoading(true);
-      const request = savedMovies.map(i => fetchMovieById(i.movieId));
+      const request:Promise<IResponseById>[] = savedMovies.map(i => fetchMovieById(i.movieId));
       Promise.all(request)
         .then(data => setMovies(data))
         .catch(e => setError(e))

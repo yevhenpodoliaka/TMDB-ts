@@ -10,9 +10,7 @@ const initUserContext: IUserContext = {
   logInUser: () => {},
   logOutUser: () => {},
 };
-const initUserDataState: { name: string } = {
-  name: '',
-};
+
 
 export const UserContext = createContext(initUserContext);
 
@@ -22,7 +20,7 @@ const UserContextProvider = ({
   children: React.ReactNode;
 }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [token, setToken] = useLocalStorage('token','');
+    const [token , setToken] = useLocalStorage<string>('token', '');
     const [userName, setUserName] = useState("");
 
   const logInUser = useCallback(
@@ -36,7 +34,7 @@ const UserContextProvider = ({
   const logOutUser = () => {
       setIsLoggedIn(false);
       setToken("")
-    setUserName("");
+      setUserName("");
   };
 
   return (

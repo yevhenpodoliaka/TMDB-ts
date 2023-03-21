@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { ISavedMovie } from 'interfaces/movieInterfaces';
-
+interface IResponseSavedMovie {
+  movies: ISavedMovie[];
+}
 export const addMovie = async (movieId:string,group:string) => {
     try {
-        const { data } = await axios.post("movies/", { movieId, group }) 
+        const { data } = await axios.post<IResponseSavedMovie>('movies/', {
+          movieId,
+          group,
+        }); 
       return data  
     } catch (error) {
         if (axios.isAxiosError(error)) {
@@ -18,7 +23,7 @@ export const addMovie = async (movieId:string,group:string) => {
 
 export const updateMovie = async (_id: string, group: string) => {
   try {
-    const { data } = await axios.patch(`movies/${_id}`, {
+    const { data } = await axios.patch<IResponseSavedMovie>(`movies/${_id}`, {
       group: group,
     });
     return data;
@@ -35,7 +40,7 @@ export const updateMovie = async (_id: string, group: string) => {
 
 export const removeMovie = async (_id: string) => {
   try {
-    const { data } = await axios.delete(`movies/${_id}`);
+    const { data } = await axios.delete<IResponseSavedMovie>(`movies/${_id}`);
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -48,9 +53,7 @@ export const removeMovie = async (_id: string) => {
   }
 };
 
-interface IResponseSavedMovie{
-  movies:ISavedMovie[]
-}
+
 export const getAllMovies=async()=>{
     try {
       const { data } = await axios.get<IResponseSavedMovie>('movies/');

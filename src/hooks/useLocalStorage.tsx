@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react';
 
-const useLocalStorage = (key: string, defaultValue: string) => {
-  const [value, setValue] = useState(() => {
+const useLocalStorage = <T,>(
+  key: string,
+  defaultValue: T
+):[T, React.Dispatch<React.SetStateAction<T>>] => {
+  const [value, setValue] = useState<T>(() => {
     let currentValue;
 
     try {
-      currentValue = JSON.parse(localStorage.getItem(key) || defaultValue);
+      currentValue = JSON.parse(
+        localStorage.getItem(key) || JSON.stringify(defaultValue)
+      );
     } catch (error) {
       currentValue = defaultValue;
     }

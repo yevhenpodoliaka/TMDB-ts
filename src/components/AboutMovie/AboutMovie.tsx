@@ -1,5 +1,6 @@
 import { IAboutMovie } from 'interfaces/movieInterfaces';
 import styles from './AboutMovie.module.css';
+import ToggleGroupsButton from 'components/ToggleGroupsButtons/ToggleGroupsButtons';
 
 const AboutMovie = ({
   title,
@@ -16,6 +17,7 @@ const AboutMovie = ({
 }: IAboutMovie) => {
   return (
     <div className={styles.descriptionWrap}>
+      <ToggleGroupsButton/>
       <table>
         {title && (
           <thead>
