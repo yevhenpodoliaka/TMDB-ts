@@ -14,7 +14,6 @@ interface IProps {
 
 const MovieDetails = ({ data }: IProps) => {
   const {
-    id,
     backdrop_path,
     budget,
     genres,

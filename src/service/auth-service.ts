@@ -6,7 +6,7 @@ import {
   IResponseCurrentUser,
 } from 'interfaces/authInterfaces';
 
-axios.defaults.baseURL = 'https://tmdb-backend-production.up.railway.app/api';
+axios.defaults.baseURL = 'https://tmdb-backend.onrender.com/api';
 
 const token = {
   set(token: string) {
@@ -28,8 +28,9 @@ export const registerUser = async ({
       email,
       password,
     });
+ 
     token.set(data.token);
-    return data;
+   return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response?.status === 409) {

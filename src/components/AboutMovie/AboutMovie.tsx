@@ -1,7 +1,18 @@
-import { IAboutMovie } from 'interfaces/movieInterfaces';
 import styles from './AboutMovie.module.css';
 import ToggleGroupsButton from 'components/ToggleGroupsButtons/ToggleGroupsButtons';
-
+ interface IAboutMovie {
+  title: string;
+  original_title: string;
+  release_date: string;
+  genres: { id: number; name: string }[];
+  vote_count: number;
+  vote_average: number;
+  revenue: number;
+  homepage: string;
+  runtime: number;
+  budget: number;
+  overview: string;
+}
 const AboutMovie = ({
   title,
   original_title,

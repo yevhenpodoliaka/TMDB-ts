@@ -1,6 +1,11 @@
 import defaultPoster from 'images/no-poster.jpg';
-import { IActor } from 'interfaces/movieInterfaces';
 import styles from './Cast.module.css';
+export interface IActor {
+  id?: number;
+  character: string;
+  name: string;
+  profile_path: string;
+}
 
 const Actor = ({ character, name, profile_path }: IActor) => {
   const imageUrl = profile_path

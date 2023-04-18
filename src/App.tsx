@@ -31,7 +31,7 @@ export const App = () => {
 //зберігання колекції користувача до LocalStorage
   useEffect(() => {
     if (isLoggedIn) {
-      console.log("useeffect savedMovies APP")
+
       getAllMovies()
         .then(data => localStorage.setItem('savedMovies', JSON.stringify(data?.movies)))
         .catch(e => console.log(e));

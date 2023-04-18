@@ -57,6 +57,7 @@ export const removeMovie = async (_id: string) => {
 export const getAllMovies=async()=>{
     try {
       const { data } = await axios.get<IResponseSavedMovie>('movies/');
+     console.log(data, 'data');
       return data;
 
     } catch (error) {

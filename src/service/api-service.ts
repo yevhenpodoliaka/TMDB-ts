@@ -1,12 +1,12 @@
 import {
   IResponse,
   IResponseById,
-  ICast,
-  IResponseReviews,
 } from '../interfaces/movieInterfaces';
+import {IActor}from "components/Cast/Actor"
 
 const KEY = process.env.REACT_APP_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3/';
+
 
 export async function fetchTrendingMovies(page: number = 1) {
   const url = `${BASE_URL}/trending/movie/day?api_key=${KEY}&language=uk-UA&page=${page}`;
@@ -53,6 +53,9 @@ export async function fetchMovieById(movieId: string) {
   const data: IResponseById = await response.json();
   return data;
 }
+ interface ICast {
+  cast: IActor[];
+}
 
 export async function fetchCast(movieId: string) {
   const url = `${BASE_URL}/movie/${movieId}/credits?api_key=${KEY}&language=uk-UA`;
@@ -64,15 +67,6 @@ export async function fetchCast(movieId: string) {
   const data: ICast = await response.json();
   return data;
 }
-export async function fetchReviews(movieId: string) {
-  const url = `${BASE_URL}/movie/${movieId}/reviews?api_key=${KEY}&language=en-US`;
-  const response = await fetch(url);
-  if (!response.ok) {
-    const message = `Error Status ${response.status}`;
-    throw new Error(message);
-  }
-  const data: IResponseReviews = await response.json();
-  return data;
-}
+
 
 

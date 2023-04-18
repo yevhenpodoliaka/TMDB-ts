@@ -13,51 +13,65 @@ const ToggleGroupsButton = () => {
   );
   const [isLoading, setIsLoading] = useState(false);
   const { movieId } = useParams();
-  const {isLoggedIn}=useUserContext()
+  const { isLoggedIn } = useUserContext();
   const currentMovie: ISavedMovie | undefined = useMemo(() => {
     return savedMovies.find(i => i.movieId === movieId);
   }, [movieId, savedMovies]);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const add = async (movieId: string, group: string) => {
+    setIsLoading(true);
+    try {
+      const data = await addMovie(movieId, group);
+      if (data) setSavedMovies(data.movies);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+    const remove = async ( _id: string) => {
+      setIsLoading(true);
+      try {
+        const data = await removeMovie(_id);
+        if (data) setSavedMovies(data.movies);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setIsLoading(false);
+      }
+  };
+      const update = async ( _id:string, group: string) => {
+      setIsLoading(true);
+      try {
+        const data = await updateMovie( _id, group);
+        if (data) setSavedMovies(data.movies);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     if (!isLoggedIn) {
-      alert("Для користування бібліотекою Ви маєте увійти в обліковий запис")
-      return
+      alert('Для користування бібліотекою Ви маєте увійти в обліковий запис');
+      return;
     }
     const group = e.currentTarget.dataset.group;
     if (!currentMovie && movieId && group) {
-      setIsLoading(true);
-      addMovie(movieId?.toString(), group)
-        .then(data => {
-          if (data) setSavedMovies(data.movies);
-        })
-        .catch(e => console.log(e))
-        .finally(() => setIsLoading(false));
+      await add(movieId.toString(), group);
     }
-    if (currentMovie && e.currentTarget.dataset.group === currentMovie?.group) {
-      setIsLoading(true);
-      removeMovie(currentMovie._id)
-        .then(data => {
-          if (data) setSavedMovies(data.movies);
-        })
-        .catch(e => console.log(e))
-        .finally(() => setIsLoading(false));
+    if (currentMovie && e.currentTarget.dataset.group === currentMovie.group) {
+      await remove(currentMovie._id);
     }
 
     if (
       group &&
       currentMovie &&
-      e.currentTarget.dataset.group !== currentMovie?.group
+      e.currentTarget.dataset.group !== currentMovie.group
     ) {
-      setIsLoading(true);
-      updateMovie(currentMovie._id, group)
-        .then(data => {
-          if (data) setSavedMovies(data.movies);
-        })
-        .catch(e => console.log(e))
-        .finally(() => setIsLoading(false));
-    }
-  };
-
+      await update(currentMovie._id, group)
+    };
+  }
   return (
     <div className={styles.wrap}>
       <button
@@ -70,8 +84,8 @@ const ToggleGroupsButton = () => {
         disabled={isLoading}
       >
         {currentMovie?.group === 'favorites'
-          ? "Улюблене"
-          : "Додати до улюбленого"}
+          ? 'Улюблене'
+          : 'Додати до улюбленого'}
       </button>
       <button
         className={`${styles.button} ${
@@ -95,9 +109,7 @@ const ToggleGroupsButton = () => {
         onClick={handleClick}
         disabled={isLoading}
       >
-        {currentMovie?.group === 'queued'
-          ? 'В черзі'
-          : 'Додати до черги'}
+        {currentMovie?.group === 'queued' ? 'В черзі' : 'Додати до черги'}
       </button>
     </div>
   );

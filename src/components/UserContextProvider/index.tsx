@@ -1,7 +1,12 @@
 import { createContext, useState ,useCallback} from 'react';
 import useLocalStorage from 'hooks/useLocalStorage';
-import { IUserContext } from 'interfaces/authContextInterfaces';
-
+ interface IUserContext {
+  isLoggedIn: boolean;
+  userName: string;
+  token: string;
+  logInUser: (name: string, token: string) => void;
+  logOutUser: () => void;
+}
 
 const initUserContext: IUserContext = {
   isLoggedIn: false,
@@ -10,7 +15,6 @@ const initUserContext: IUserContext = {
   logInUser: () => {},
   logOutUser: () => {},
 };
-
 
 export const UserContext = createContext(initUserContext);
 
